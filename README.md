@@ -27,7 +27,7 @@ npm.cmd run test:e2e
 
 Browser checks use a production server and cover desktop/mobile layouts, project filters/history/search, CV files, direct case-study routes, reduced motion, the walkthrough, and automated accessibility scans. The build must exist first.
 
-The improvement pass passes production build, TypeScript checks, and all 14 desktop/mobile Chromium tests, including automated WCAG scans. Desktop/mobile screenshots were reviewed. This does not establish branded Safari/Firefox compatibility or real-user Core Web Vitals.
+The improvement pass passes production build, TypeScript checks, and all 16 desktop/mobile Chromium tests, including hierarchy/grouping regression checks and automated WCAG scans. Desktop/mobile screenshots were reviewed. This does not establish branded Safari/Firefox compatibility or real-user Core Web Vitals.
 
 Use `npm.cmd run format` to format source and content; `npm.cmd run format:check` verifies formatting without changes.
 

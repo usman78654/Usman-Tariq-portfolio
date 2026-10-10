@@ -1,0 +1,155 @@
+/* Recruiter-facing hierarchy: readable context, explicit grouping, and consistent
+   status treatment. Keep decorative diagram text separate from navigation labels. */
+.section .eyebrow {
+  font-size: 14px;
+  line-height: 1.6;
+  letter-spacing: 0.075em;
+}
+.section-heading .eyebrow,
+.approach > .eyebrow,
+.playground-intro > .eyebrow,
+.about-title > .eyebrow,
+.architecture-section > .eyebrow,
+.decisions-section > .eyebrow,
+.evidence-section > .eyebrow {
+  font-size: clamp(15px, 1.15vw, 18px);
+  font-weight: 700;
+  color: var(--lime);
+  border-left: 3px solid var(--lime);
+  padding-left: 14px;
+}
+.hero-bottom {
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.hero-bottom > span {
+  font-size: clamp(15px, 1.25vw, 19px);
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.05em;
+}
+.project-grid {
+  gap: 48px 32px;
+}
+.project-card {
+  height: 100%;
+  border: 1px solid #56604a;
+  border-radius: 16px;
+  background: #20251c;
+  /* Don't clip focus outlines or the interactive preview's controls. */
+}
+.project-card .project-preview,
+.project-card .project-visual-link {
+  border-radius: 15px 15px 0 0;
+  border-bottom: 1px solid #56604a;
+}
+.project-card .project-info {
+  padding: 28px;
+}
+.project-eyebrow {
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: 0.025em;
+  color: #e0e7d6;
+  margin-bottom: 22px;
+}
+.project-eyebrow > span:first-child {
+  flex: 1 1 180px;
+}
+.project-eyebrow > span:last-child {
+  flex: 0 1 auto;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+  color: #e3f2cb;
+  background: #303d23;
+  border: 1px solid #65764f;
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+.project-card .project-info > p {
+  font-size: 15px;
+  line-height: 1.8;
+}
+.project-card .tags > span {
+  font-size: 12px;
+}
+.curated-grid .flagship-card .project-preview,
+.curated-grid .story-card .project-preview {
+  border-radius: 15px 0 0 15px;
+  border-bottom: 0;
+  border-right: 1px solid #56604a;
+}
+.curated-grid > .wide-project:first-child {
+  padding-bottom: 32px;
+  border-bottom: 2px solid #49523e;
+  margin-bottom: 4px;
+}
+.simulation-top {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 18px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.simulation-top > span:first-child {
+  font-weight: 700;
+}
+.simulation-top > span:last-child {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #d2ddc4;
+  padding: 6px 10px;
+  border: 1px solid #58654b;
+  border-radius: 6px;
+  background: #293322;
+}
+.simulation .sim-event {
+  font-size: 12px;
+  line-height: 1.6;
+}
+.simulation .simulation-note {
+  font-size: 12px;
+  line-height: 1.7;
+}
+@media (max-width: 760px) {
+  .section .eyebrow {
+    font-size: 14px;
+  }
+  .hero-bottom > span {
+    font-size: 15px;
+  }
+  .hero-bottom a {
+    font-size: 12px;
+  }
+  .project-grid {
+    gap: 32px;
+  }
+  .project-card .project-info {
+    padding: 24px;
+  }
+  .project-eyebrow {
+    font-size: 14px;
+    gap: 12px;
+  }
+  .curated-grid .flagship-card .project-preview,
+  .curated-grid .story-card .project-preview {
+    border-radius: 15px 15px 0 0;
+    border-right: 0;
+    border-bottom: 1px solid #56604a;
+  }
+  .simulation-top {
+    font-size: 14px;
+  }
+  .simulation-top > span:last-child {
+    font-size: 12px;
+  }
+}

@@ -3,6 +3,7 @@ import { Header, Footer } from "@/components/site-shell";
 import { getSiteUrl } from "@/content/site-url";
 import "./globals.css";
 import "./improvements.css";
+import "./hierarchy.css";
 
 export const metadata: Metadata = {
   metadataBase: getSiteUrl(),

@@ -2,7 +2,7 @@
 
 Owner: Usman Tariq  
 Created: October 10, 2026  
-Last updated: October 10, 2026
+Last updated: October 11, 2026
 
 ## Objective
 
@@ -300,6 +300,16 @@ Keep the existing portrait as the professional introduction and use less formal 
 - Treat source-site observations as inspiration, not a requirement to copy their compositions or assets.
 
 ## Verification and progress log
+
+### October 11, 2026 — readable hierarchy and explicit project grouping
+
+Status: implemented and verified, ready for visual review.
+
+- Enlarged discipline labels, section markers, project category labels, and simulation headers. Main context labels are at least 14px; project/walkthrough statuses are at least 12px, with distinct badges.
+- Added consistent bordered project surfaces, rounded corners, preview/content dividers, larger gutters, and a separator after the flagship. These apply visual hierarchy, contrast, proximity, and common-region grouping so adjacent projects are clearly independent.
+- Preserved the flagship/two-column composition, project order, accessible controls, reduced motion, and mobile stacking. Status badges wrap rather than shrink on narrow screens.
+- Added `src/app/hierarchy.css` and a regression test for readable computed sizes, card boundaries, and viewport overflow.
+- Production build and typecheck pass; all 16 desktop/mobile Chromium tests pass, including automated WCAG scans. Desktop/mobile project and playground screenshots reviewed. No new dependencies or content claims.
 
 For each implemented improvement, record the date, changed files, checks performed, observed limitations, and final status. Use focused interaction checks, responsive/reduced-motion review, and screenshots where appropriate. Do not mark an improvement Done merely because code was written.
 
