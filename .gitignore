@@ -1,0 +1,15 @@
+node_modules/
+.next/
+out/
+.env*
+!.env.example
+*.tsbuildinfo
+test-results/
+playwright-report/
+tmp/
+.vercel/
+# Preserve supplied originals locally; public copies are under public/.
+/CV-UsmanTariq.pdf
+/Cloud_Based_CV.pdf
+/SQA_USMAN_TARIQ_CV.pdf
+/NewPFP.png

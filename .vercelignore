@@ -1,0 +1,11 @@
+.git/
+node_modules/
+.next/
+test-results/
+playwright-report/
+tmp/
+*.tsbuildinfo
+CV-UsmanTariq.pdf
+Cloud_Based_CV.pdf
+SQA_USMAN_TARIQ_CV.pdf
+NewPFP.png
