@@ -48,7 +48,7 @@ Project READMEs take precedence over conflicting CV project claims. Project diag
 
 ## Deployment
 
-Deployed to the separate Vercel project `usman-tariq-portfolio` on October 10, 2026. The existing ClearStep project is unchanged. Next.js is automatically detected; no API keys, database, or model server are required. Vercel's production URL supplies canonical and sitemap metadata. See [DEPLOYMENT.md](DEPLOYMENT.md) for updates and the pending GitHub login connection needed for automatic deployments.
+Deployed to the separate Vercel project `usman-tariq-portfolio` on October 10, 2026. The existing ClearStep project is unchanged. Next.js is automatically detected; no API keys, database, or model server are required. Vercel's production URL supplies canonical and sitemap metadata. GitHub is connected: pushes to `main` trigger production deployments. See [DEPLOYMENT.md](DEPLOYMENT.md) for the update workflow.
 
 ## Remaining content work
 
