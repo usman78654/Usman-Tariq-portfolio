@@ -9,17 +9,17 @@ export const projectOrder: Record<Focus, string[]> = {
     "cloudcrew",
     "ecommerce-qa",
     "cipherrelay",
+    "mindplay",
     "cross-browser-qa",
     "edime",
-    "mindplay",
     "rag-pipeline",
   ],
   software: [
     "clearstep",
     "claimguard",
+    "mindplay",
     "cipherrelay",
     "edime",
-    "mindplay",
     "rag-pipeline",
   ],
   cloud: ["cloudcrew", "cipherrelay"],
@@ -42,7 +42,7 @@ export const projectScope: Record<string, string> = {
   edime:
     "Conditional diffusion research and explicit evaluation of unsuccessful outcomes.",
   mindplay:
-    "EEG recording, feature extraction, subject-specific training, and desktop inference.",
+    "Team-built EEG, blink, and head-motion game control with calibration, command arbitration, and desktop tooling.",
   "rag-pipeline":
     "A local document retrieval and question-answering application.",
 };

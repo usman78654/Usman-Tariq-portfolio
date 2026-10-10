@@ -153,3 +153,31 @@
     font-size: 12px;
   }
 }
+.project-recording > .eyebrow {
+  display: block;
+  margin-bottom: 16px;
+}
+.project-preview .project-recording {
+  padding: 20px;
+  margin: 0;
+}
+.project-recording video {
+  max-height: 580px;
+  object-fit: contain;
+}
+.project-recording figcaption {
+  font-size: 14px;
+}
+.project-recording details {
+  margin: 16px 0;
+}
+.project-recording summary {
+  cursor: pointer;
+  min-height: 44px;
+}
+.project-recording li {
+  margin-bottom: 8px;
+}
+.preview-toolbar {
+  flex-wrap: wrap;
+}

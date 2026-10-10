@@ -558,28 +558,32 @@ export const projects: Project[] = [
   {
     slug: "mindplay",
     title: "Mindplay",
-    subtitle: "From a signal to an interaction.",
+    subtitle: "Three signals. One hands-free interaction.",
     summary:
-      "An EEG pipeline for training and real-time classification of hand motor imagery versus rest.",
-    category: "Signal processing",
+      "A team-built brain–computer interface prototype combining motor-imagery EEG, intentional blinks, and head motion into hands-free game controls.",
+    category: "Brain–computer interfaces",
     focus: ["software"],
-    stack: ["Python", "FBCSP", "LDA", "PyQt6"],
+    stack: ["Python", "FBCSP", "LDA", "LSL", "PyQt6", "pytest"],
     repo: "Mindplay-eeg-motor-imagery",
     color: "purple",
     visual: "research",
-    status: "Desktop research pipeline",
+    status: "Academic prototype",
     problem:
-      "A real-time EEG classifier needs a consistent recording, training, and evaluation pipeline. Channel order and signal units must stay aligned from data collection to inference.",
+      "Explore an alternative to conventional game controllers for players with limited hand mobility. The engineering challenge is translating noisy, calibrated sensor signals into intentional commands without competing detectors causing accidental actions.",
     solution:
-      "Mindplay combines FBCSP feature extraction and an LDA classifier with Lab Streaming Layer input and a PyQt6 interface for recording, training, evaluation, and live classification.",
+      "Smarting headset signals arrive through Lab Streaming Layer. A five-band FBCSP/LDA branch classifies motor imagery, while blink and gyroscope branches detect complementary inputs. Shared command arbitration and cooldown feed keyboard controls and a live gamepad overlay; a PyQt6 interface connects recording, training, evaluation, and live use.",
     decisions: [
+      {
+        title: "Arbitrate competing inputs",
+        text: "Motor imagery, blink, and head-motion detectors share a cooldown so simultaneous detections do not produce competing commands. Refractory periods and consecutive predictions address false activation.",
+      },
       {
         title: "Make units explicit",
         text: "The pipeline expects microvolts. Stream values in volts require conversion, and the recording/training channel ordering must match.",
       },
       {
         title: "Use subject-specific training",
-        text: "Record labeled motor-imagery and rest trials, train a model, then evaluate before moving into sliding-window classification.",
+        text: "Record balanced motor-imagery and rest trials, then train and evaluate before live use. Separate matching-dataset results from proxy cross-dataset checks rather than presenting every score as subject accuracy.",
       },
       {
         title: "Connect the workflow",
@@ -588,33 +592,49 @@ export const projects: Project[] = [
     ],
     evidence: [
       {
+        label: "Documented evaluation",
+        value: "94.4% / 160 trials",
+        context:
+          "Repository-reported accuracy and balanced accuracy for raw channels 0,3,4 cropped to 3 seconds. The report evaluates a saved model on a matching dataset; it does not establish a held-out split or across-user generalization.",
+      },
+      {
         label: "Classifier",
         value: "FBCSP + LDA",
         context: "Hand motor imagery versus rest.",
       },
       {
-        label: "Stream",
-        value: "LSL",
-        context: "Sliding-window real-time classification.",
+        label: "Complementary inputs",
+        value: "EEG + blink + motion",
+        context: "Three branches with shared command arbitration and cooldown.",
       },
       {
-        label: "Desktop UI",
-        value: "PyQt6",
-        context: "Recording, training, and evaluation workflow.",
+        label: "Automated checks",
+        value: "13 tests reported",
+        context:
+          "README reports passing checks for signal processing, channel selection, cooldown, blink buffering, and gyroscope processing. These are software checks, not proof of end-to-end usability.",
       },
     ],
     limits: [
-      "Real subject data and suitable EEG hardware are needed for meaningful live evaluation.",
-      "Synthetic tests do not establish real-world classifier accuracy.",
+      "Academic prototype, not a clinically validated accessibility aid, medical device, or safety-critical control system.",
+      "Matching-dataset scores may include training data; the report does not document an independent held-out protocol. Small datasets and best-available proxy scores must not be treated as generalization evidence.",
+      "Live behavior depends on the user, session, electrode placement, and calibration. Windows, suitable EEG hardware, and an external LSL stream are required for the complete setup.",
       "Channel order, preprocessing, and units must match the trained model.",
     ],
-    next: "Collect a representative subject dataset and document repeatable real-data evaluation.",
+    next: "Document a leakage-free, held-out evaluation across sessions and users, then measure false activations and end-to-end command latency during real gameplay. Clarify my individual responsibilities within the team.",
     flow: [
-      "EEG stream",
-      "Windowing",
-      "FBCSP features",
-      "LDA classifier",
-      "Desktop feedback",
+      "Headset / LSL",
+      "EEG / blink / motion branches",
+      "Command arbitration",
+      "Shared cooldown",
+      "Game controls + overlay",
+    ],
+    links: [
+      {
+        label: "Evaluation report & methodology",
+        path: "reports/model_evaluation_report.md",
+      },
+      { label: "System architecture", path: "docs/ARCHITECTURE.md" },
+      { label: "Demo execution guide", path: "DEMO_EXECUTION_GUIDE.md" },
     ],
   },
 ];

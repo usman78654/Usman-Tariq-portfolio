@@ -5,6 +5,8 @@ import { useId, useState } from "react";
 import type { Project } from "@/content/projects";
 import { ProjectArt } from "./project-art";
 import { architecture } from "@/content/architecture";
+import { projectVideos } from "@/content/project-videos";
+import { ProjectVideo } from "./project-video";
 
 export function ProjectPreview({
   project,
@@ -14,6 +16,8 @@ export function ProjectPreview({
   interactive?: boolean;
 }) {
   const [inside, setInside] = useState(false);
+  const [watching, setWatching] = useState(false);
+  const video = projectVideos[project.slug];
   const [selected, setSelected] = useState(0);
   const [analyzed, setAnalyzed] = useState(false);
   const id = useId();
@@ -23,7 +27,9 @@ export function ProjectPreview({
       ? "/projects/cloudcrew-console.png"
       : project.slug === "ecommerce-qa"
         ? "/projects/proshop-qa.png"
-        : null;
+        : project.slug === "mindplay"
+          ? "/projects/mindplay-poster.png"
+          : null;
   return (
     <div className={`project-preview preview-${project.slug}`}>
       {interactive && (
@@ -32,15 +38,40 @@ export function ProjectPreview({
           role="group"
           aria-label={`${project.title} preview mode`}
         >
-          <button aria-pressed={!inside} onClick={() => setInside(false)}>
+          <button
+            aria-pressed={!inside && !watching}
+            onClick={() => {
+              setInside(false);
+              setWatching(false);
+            }}
+          >
             Preview
           </button>
-          <button aria-pressed={inside} onClick={() => setInside(true)}>
+          <button
+            aria-pressed={inside}
+            onClick={() => {
+              setInside(true);
+              setWatching(false);
+            }}
+          >
             Look inside <span aria-hidden="true">↗</span>
           </button>
+          {video && (
+            <button
+              aria-pressed={watching}
+              onClick={() => {
+                setInside(false);
+                setWatching(true);
+              }}
+            >
+              Watch video
+            </button>
+          )}
         </div>
       )}
-      {inside ? (
+      {watching && video ? (
+        <ProjectVideo video={video} />
+      ) : inside ? (
         <div className="inside-panel">
           <span className="eyebrow">
             SIMPLIFIED ARCHITECTURE / INSPECT A COMPONENT
@@ -81,14 +112,24 @@ export function ProjectPreview({
             alt={
               project.slug === "cloudcrew"
                 ? "Actual CloudCrew console showing task and worker state"
-                : "ProShop storefront used in the QA assessment"
+                : project.slug === "mindplay"
+                  ? "Illustrated Mindplay headset calibration from the supplied animated walkthrough"
+                  : "ProShop storefront used in the QA assessment"
             }
             width={1440}
-            height={project.slug === "cloudcrew" ? 3147 : 1300}
+            height={
+              project.slug === "cloudcrew"
+                ? 3147
+                : project.slug === "mindplay"
+                  ? 768
+                  : 1300
+            }
             sizes="(max-width: 760px) 100vw, 70vw"
           />
           <figcaption>
-            ACTUAL REPOSITORY SCREENSHOT
+            {project.slug === "mindplay"
+              ? "ANIMATED WORKFLOW ILLUSTRATION · NOT LIVE FOOTAGE"
+              : "ACTUAL REPOSITORY SCREENSHOT"}
             {project.slug === "ecommerce-qa"
               ? " · THIRD-PARTY APPLICATION"
               : ""}

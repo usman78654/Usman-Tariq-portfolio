@@ -9,3 +9,9 @@ Public project evidence reviewed October 10, 2026. Source repository originals r
 ProShop v2 is Brad Traversy's third-party application. The portfolio presents Usman's QA assessment, not authorship of its storefront/product imagery. The silent recording requires visitor action and preloads no video data; findings have accompanying case-study text.
 
 ClearStep, ClaimGuard, CipherRelay, and playground visuals are labeled illustrations/local simulations, not recordings of running services. No private workplace material is included.
+
+# Mindplay media (October 11, 2026)
+
+`mindplay-walkthrough.mp4` is a public copy of the user's supplied `Videos/MindPlay-Video.mp4` (approximately 19 seconds, 24 MB). The local original is preserved and excluded from Git/deployment uploads. `mindplay-poster.png` is a frame from that video. The video is an animated workflow illustration, not captured live-system evidence. Its accompanying text supplies a visual workflow summary; no claim is made that it validates EEG accuracy.
+
+Project video support is reusable: add an entry to `src/content/project-videos.ts` with its public asset, poster, descriptive label, provenance, and visual summary. Both the interactive project preview and case-study evidence use the same player. No autoplay or eager video download is enabled. Supply captions for future recordings with speech.

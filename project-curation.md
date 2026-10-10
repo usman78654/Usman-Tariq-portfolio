@@ -13,14 +13,18 @@ Reviewed October 10, 2026. Source of truth: public READMEs and committed evidenc
 
 ## Supporting work and archive
 
-EDiME remains a research case study with honest unsuccessful evaluation, not a headline success claim. Mindplay is a distinctive EEG/desktop team project; real-data evaluation and individual contribution details remain unspecified. Local RAG supports document retrieval, but ClaimGuard has a stronger verification story.
+EDiME remains a research case study with honest unsuccessful evaluation, not a headline success claim. Mindplay is now featured following the October 11 review: it has documented matching-dataset evaluation, three input branches, and a visual explanation; individual contribution details and independent held-out evaluation remain unspecified. Cross-browser QA is retained in the QA filter and full collection. Local RAG supports document retrieval, but ClaimGuard has a stronger verification story.
 
 Sixteen other repositories remain directly accessible in the archive: algorithms, coursework, ML experiments, full-stack projects, and earlier systems. Broad feature lists and isolated model metrics are not substitutes for inspectable verification evidence.
 
 [Forgequeue](https://github.com/usman78654/Forgequeue) is confirmed solo work, but GitHub's public Git tree endpoint currently reports **Git Repository is empty (409)**. Keep it in progress and reevaluate when implementation and a README are published.
 
-Default order: ClearStep → ClaimGuard → CloudCrew → e-commerce QA → CipherRelay → cross-browser QA. Complete explorer: nine case studies plus 16 archive links. Role-specific order lives in `src/content/curation.ts`.
+Default order: ClearStep → ClaimGuard → CloudCrew → e-commerce QA → CipherRelay → Mindplay. Complete explorer: nine case studies plus 16 archive links. Role-specific order lives in `src/content/curation.ts`.
 
 ## Ownership policy
 
 Confirmed solo: ClearStep, both QA portfolios, Forgequeue. Confirmed team: Mindplay. Other case studies use “Work in this repository” instead of inferring sole authorship. Third-party QA application creators are credited separately.
+
+# Mindplay review — October 11, 2026
+
+Promoted Mindplay into the default six selected projects, with the cross-browser QA project still available in the QA filter and full collection. The revised README now documents a distinctive three-input BCI system, shared command arbitration, tests, and an inspectable evaluation report. Team authorship remains explicit; individual ownership is not inferred. The 94.4% matching-dataset snapshot is qualified because the report does not establish held-out evaluation. The supplied animation explains the concept but is not real gameplay evidence.

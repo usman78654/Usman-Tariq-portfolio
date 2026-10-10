@@ -10,6 +10,8 @@ import { ProjectPreview } from "@/components/project-preview";
 import { CaseNav } from "@/components/case-nav";
 import { projectScope, contributions } from "@/content/curation";
 import { getSiteUrl } from "@/content/site-url";
+import { projectVideos } from "@/content/project-videos";
+import { ProjectVideo } from "@/components/project-video";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -190,25 +192,8 @@ export default async function ProjectPage({
       <section className="section evidence-section" id="evidence">
         <span className="eyebrow">04 / WHAT TO LOOK AT</span>
         <h2>Evidence over adjectives.</h2>
-        {p.slug === "ecommerce-qa" && (
-          <figure className="qa-recording">
-            <video
-              controls
-              preload="none"
-              poster="/projects/proshop-qa.png"
-              aria-label="Recorded ProShop QA walkthrough"
-              src="/projects/proshop-qa-walkthrough.webm"
-            >
-              <a href="/projects/proshop-qa-walkthrough.webm">
-                Download the silent QA recording
-              </a>
-            </video>
-            <figcaption>
-              Actual repository walkthrough. QA work on Brad Traversy's ProShop
-              v2, not authorship of the shop. Silent screen recording; findings
-              are described in the evidence below.
-            </figcaption>
-          </figure>
+        {projectVideos[p.slug] && (
+          <ProjectVideo video={projectVideos[p.slug]} />
         )}
         <div className="evidence-grid">
           {p.evidence.map((e) => (
@@ -221,7 +206,7 @@ export default async function ProjectPage({
         </div>
         <p className="source-note">
           Capabilities and result snapshots follow the project's current README,
-          reviewed October 10, 2026.{" "}
+          reviewed {p.slug === "mindplay" ? "October 11" : "October 10"}, 2026.{" "}
           <a href={`${repoUrl(p)}#readme`} target="_blank" rel="noreferrer">
             Read the source <ArrowUpRight size={14} />
           </a>

@@ -328,3 +328,13 @@ For each implemented improvement, record the date, changed files, checks perform
 - **Verification:** production build and typecheck; 14 desktop/mobile Chromium tests covering filters/history/search, nine case routes, three note routes, PDFs, clipboard failures/success, previews, scenarios, resets, reduced motion, evidence delivery, and WCAG scans. Desktop/mobile screenshots reviewed. Fixed an intrinsic-grid mobile overflow and strengthened checks against layout viewport width.
 - **Limits:** no deployment, real-user performance measurement, or branded Safari/Firefox test. View transitions fall back to normal navigation where unsupported. Unconfirmed individual task ownership and extra photos remain explicitly pending. Seven items are Ready for review, not automatically signed off as Done.
 - **Additional checks:** homepage, explorer, two new/featured cases, and a note have no horizontal overflow at 320, 390, 768, 1024, and 1440 CSS pixels. With JavaScript disabled, ClearStep still has its four-step static architecture and matching CV link. File hashes confirm the public CV/portrait copies match the supplied originals. ClearStep/CipherRelay's inspectable layer explicitly covers extraction, validation, inference, local storage, encryption, transport, identity trust, and operational boundaries.
+
+# Mindplay and project videos — October 11, 2026
+
+Status: Ready for review. Production build, TypeScript, and all 18 desktop/mobile Chromium tests pass, including actual video decoding/playback and layout checks.
+
+- Updated Mindplay from the current repository README and evaluation report, including three input branches, arbitration, hardware requirements, team attribution, and evaluation caveats.
+- Promoted Mindplay into the six default selected projects; both QA projects remain in the QA filter.
+- Added reusable, user-controlled video playback to project previews and case studies. Mindplay's supplied animation is labelled as a visual explanation; the existing ProShop video remains actual QA footage.
+- Inspected all nine featured repositories: only ProShop has a checked-in video asset. Mindplay uses the supplied local video; the other seven need recordings before playback can be added. External video links not checked into a repository may still exist.
+- Preserve local original media; publish separate public copies. No autoplay, and video data is not preloaded.
