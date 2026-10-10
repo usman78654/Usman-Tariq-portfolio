@@ -1,5 +1,8 @@
 # Usman Tariq's portfolio
 
+Live: https://usman-tariq-portfolio.vercel.app  
+Repository: https://github.com/usman78654/Usman-Tariq-portfolio
+
 A Next.js / TypeScript portfolio for recruiters and curious visitors. Includes curated role-aware showcases, nine README-grounded case studies, inspectable architecture, three engineering experiments, three build notes, and three original CV downloads.
 
 ## Run locally
@@ -45,7 +48,7 @@ Project READMEs take precedence over conflicting CV project claims. Project diag
 
 ## Deployment
 
-Ready for a standard Vercel Next.js project: install with `npm ci --include=dev`, build with `npm run build`, and use the detected Next.js output. No API keys, database, or model server are required. No deployment has been performed. Check current free-tier terms and quotas before publishing. Add the actual public origin through `NEXT_PUBLIC_SITE_URL` for canonical and sitemap metadata; alternatively Vercel's production URL is used when available.
+Deployed to the separate Vercel project `usman-tariq-portfolio` on October 10, 2026. The existing ClearStep project is unchanged. Next.js is automatically detected; no API keys, database, or model server are required. Vercel's production URL supplies canonical and sitemap metadata. See [DEPLOYMENT.md](DEPLOYMENT.md) for updates and the pending GitHub login connection needed for automatic deployments.
 
 ## Remaining content work
 
