@@ -1,0 +1,211 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+}
+.hero-atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  color: #c4f562;
+  opacity: 0.14;
+}
+.hero-atmosphere svg {
+  width: 100%;
+  height: 100%;
+  transform: translate(var(--field-x, 0), var(--field-y, 0));
+  transition: transform 300ms ease-out;
+}
+.hero-top,
+.hero-content,
+.hero-bottom {
+  position: relative;
+}
+.signal-studio {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: clamp(25px, 5vw, 85px);
+  align-items: center;
+  padding-top: 75px;
+  padding-bottom: 75px;
+  background: radial-gradient(ellipse at 65% 50%, #26302066, transparent 60%);
+}
+.signal-studio h2 {
+  font-size: clamp(40px, 4.5vw, 70px);
+  margin-top: 24px;
+}
+.signal-studio-copy > p {
+  margin: 25px 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+.signal-studio-copy .text-link {
+  margin-top: 25px;
+}
+.signal-boundary {
+  display: block;
+  font: 11px/1.7 var(--font-mono);
+  letter-spacing: 0.06em;
+  color: #c0c7b9;
+}
+.signal-instrument {
+  min-width: 0;
+  border: 1px solid #5c6d49;
+  border-radius: 18px;
+  background: #10150f;
+  box-shadow:
+    0 20px 80px #0002,
+    inset 0 0 60px #c4f56204;
+  overflow: hidden;
+}
+.signal-instrument-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 20px 24px 0;
+  font: 10px/1.5 var(--font-mono);
+  letter-spacing: 0.09em;
+  color: #c2cfb2;
+}
+.signal-viewport {
+  position: relative;
+  height: 350px;
+  background-image: radial-gradient(#8da67628 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+.signal-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  touch-action: pan-y;
+}
+.signal-fallback {
+  width: 100%;
+  height: 100%;
+}
+.signal-fallback[data-ready="true"] {
+  visibility: hidden;
+}
+.signal-coordinate {
+  position: absolute;
+  bottom: 16px;
+  left: 24px;
+  color: #cad6bd;
+  font: 11px var(--font-mono);
+  pointer-events: none;
+}
+.signal-form-controls {
+  display: flex;
+  gap: 8px;
+  padding: 0 24px;
+}
+.signal-form-controls button {
+  flex: 1;
+  min-height: 44px;
+  border: 1px solid #67765a;
+  border-radius: 6px;
+  padding: 10px;
+  background: transparent;
+  color: #d9e4cd;
+  font-size: 14px;
+}
+.signal-form-controls button[aria-pressed="true"] {
+  color: #172010;
+  background: var(--lime);
+  border-color: var(--lime);
+}
+.signal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  padding: 15px 24px;
+}
+.signal-actions button {
+  display: inline-flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  min-height: 44px;
+  border: 1px solid #627155;
+  border-radius: 6px;
+  padding: 9px 12px;
+  background: transparent;
+  color: #d9e4cd;
+  font-size: 12px;
+}
+.signal-actions button:hover:not(:disabled),
+.signal-form-controls button:hover:not(:disabled) {
+  border-color: var(--lime);
+}
+.signal-description {
+  min-height: 62px;
+  margin: 0;
+  padding: 0 24px;
+  color: #bdcbb0;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.signal-project-link {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  padding: 16px 24px;
+  border-top: 1px solid #46533b;
+  color: var(--lime);
+  font-size: 13px;
+}
+.signal-instrument[data-form="system"] {
+  border-color: #8b78ac;
+}
+.signal-instrument[data-form="signal"] {
+  border-color: #88a940;
+}
+.signal-instrument[data-form="structure"] {
+  border-color: #5b9489;
+}
+@media (max-width: 760px) {
+  .signal-studio {
+    grid-template-columns: 1fr;
+    padding-top: 45px;
+    padding-bottom: 40px;
+    gap: 25px;
+  }
+  .signal-studio h2 {
+    font-size: 43px;
+  }
+  .signal-studio-copy > p {
+    margin: 18px 0;
+  }
+  .signal-viewport {
+    height: 265px;
+  }
+  .signal-instrument-top,
+  .signal-actions {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .signal-form-controls,
+  .signal-description {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .signal-actions {
+    gap: 7px;
+  }
+  .signal-actions button {
+    padding: 9px;
+  }
+  .signal-boundary {
+    font-size: 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-atmosphere svg {
+    transform: none;
+    transition: none;
+  }
+}

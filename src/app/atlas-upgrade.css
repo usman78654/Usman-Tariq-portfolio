@@ -1,0 +1,306 @@
+/* A measured constellation: routes are decorative; every project remains a link. */
+.project-atlas {
+  container-type: inline-size;
+  container-name: project-atlas;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 70%, #d8f36a08, transparent 58%), #151a15;
+}
+.atlas-description span {
+  display: block;
+  margin-top: 6px;
+  color: #d8f36a;
+  font:
+    12px/1.6 var(--font-mono),
+    monospace;
+}
+.atlas-network {
+  position: relative;
+  display: block;
+  isolation: isolate;
+  min-height: 350px;
+  margin: 34px 0 28px;
+  padding: 16px 0;
+  background-image: radial-gradient(#e8efe417 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.atlas-connectors {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 0;
+}
+.atlas-connectors path {
+  fill: none;
+  vector-effect: non-scaling-stroke;
+  stroke-linecap: round;
+}
+.atlas-line-base {
+  stroke: #68745d;
+  stroke-width: 1;
+  opacity: 0.65;
+  transition:
+    stroke 180ms ease,
+    stroke-width 180ms ease;
+}
+.atlas-line-active {
+  stroke: #d8f36a;
+  stroke-width: 1.8;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  filter: drop-shadow(0 0 4px #d8f36a36);
+}
+.atlas-connectors g[data-trace="true"] .atlas-line-active {
+  animation: atlas-route-draw 650ms cubic-bezier(0.2, 0.75, 0.3, 1) both;
+  animation-delay: var(--route-delay, 0ms);
+}
+.atlas-endpoint {
+  fill: #68745d;
+}
+.atlas-connectors g[data-connected="true"] .atlas-endpoint {
+  fill: #d8f36a;
+}
+.atlas-connectors g[data-focused="true"] .atlas-line-base {
+  stroke: #e8efe4;
+  stroke-width: 2;
+  opacity: 1;
+}
+.atlas-connectors g[data-focused="true"] .atlas-line-active {
+  stroke-width: 2.8;
+}
+.atlas-hub {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: 168px;
+  min-height: 168px;
+  padding: 20px 14px;
+  border: 1px solid #d8f36a;
+  border-radius: 50%;
+  background: #1c2519;
+  color: #d8f36a;
+  text-align: center;
+  box-shadow:
+    0 0 32px #d8f36a0b,
+    inset 0 0 28px #d8f36a09;
+}
+.atlas-hub::before {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border: 1px dashed #d8f36a38;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.atlas-hub span {
+  display: block;
+  font-size: 11px;
+  line-height: 1.5;
+}
+.atlas-hub .atlas-hub-kicker {
+  color: #c7cdc1;
+  font:
+    11px/1.5 var(--font-mono),
+    monospace;
+  letter-spacing: 0.06em;
+}
+.atlas-hub strong {
+  font-size: 19px;
+  line-height: 1.2;
+  animation: atlas-theme-resolve 250ms ease-out both;
+}
+.atlas-hub .atlas-hub-count {
+  color: #c7cdc1;
+  font:
+    12px/1.5 var(--font-mono),
+    monospace;
+}
+.atlas-network ul {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px 240px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.atlas-network li {
+  min-width: 0;
+  padding: 0;
+}
+.atlas-network a {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr) 20px;
+  align-content: center;
+  gap: 7px 10px;
+  min-height: 112px;
+  padding: 20px 18px;
+  background: #181e17;
+  border: 1px solid #66725b;
+  border-radius: 10px;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+.atlas-network a .atlas-node-index {
+  grid-column: 1;
+  grid-row: 1;
+  padding-top: 3px;
+  color: #b4bfaa;
+  font:
+    11px/1.6 var(--font-mono),
+    monospace;
+}
+.atlas-network a strong {
+  grid-column: 2;
+  grid-row: 1;
+  overflow-wrap: anywhere;
+  font-size: 18px;
+  line-height: 1.3;
+}
+.atlas-network a small {
+  grid-column: 2;
+  grid-row: 2;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.atlas-network a svg {
+  grid-column: 3;
+  grid-row: 1;
+}
+.atlas-network li[data-connected="true"] a {
+  border-color: #b9d35a;
+  background: #20291b;
+}
+.atlas-network li[data-connected="true"] .atlas-node-index {
+  color: #d8f36a;
+}
+.atlas-network a:focus-visible {
+  outline: 2px solid #f4f4e9;
+  outline-offset: 4px;
+}
+@media (hover: hover) {
+  .atlas-network a:hover {
+    background: #283122;
+    border-color: #f4f4e9;
+  }
+}
+@keyframes atlas-route-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes atlas-theme-resolve {
+  from {
+    opacity: 0.65;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@container project-atlas (max-width: 760px) {
+  .atlas-network {
+    min-height: 0;
+    margin: 26px 0;
+    padding: 0;
+    background: none;
+  }
+  .atlas-connectors {
+    display: none;
+  }
+  .atlas-hub {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px 14px;
+    width: 100%;
+    min-height: 90px;
+    padding: 17px 20px;
+    border-radius: 12px;
+    text-align: left;
+  }
+  .atlas-hub::before {
+    display: none;
+  }
+  .atlas-hub .atlas-hub-kicker {
+    width: 100%;
+    font-size: 11px;
+  }
+  .atlas-hub .atlas-hub-count {
+    font-size: 12px;
+  }
+  .atlas-network ul {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    padding-left: 30px;
+    margin-top: 24px;
+  }
+  .atlas-network ul::before {
+    content: "";
+    position: absolute;
+    top: -24px;
+    bottom: 50px;
+    left: 10px;
+    width: 1px;
+    background: #69785e;
+  }
+  .atlas-network li::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    width: 20px;
+    height: 1px;
+    background: #69785e;
+  }
+  .atlas-network li::after {
+    content: "";
+    position: absolute;
+    top: calc(50% - 3px);
+    left: -23px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #69785e;
+  }
+  .atlas-network li[data-connected="true"]::before,
+  .atlas-network li[data-connected="true"]::after {
+    background: #d8f36a;
+  }
+  .atlas-network a {
+    min-height: 100px;
+    padding: 16px 14px;
+    gap: 6px 8px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .atlas-line-active,
+  .atlas-hub strong {
+    animation: none !important;
+    stroke-dashoffset: 0;
+  }
+  .atlas-line-base,
+  .atlas-network a {
+    transition: none;
+  }
+}

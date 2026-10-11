@@ -19,6 +19,7 @@ import {
   EngineeringDesk,
   PersonalSnapshots,
 } from "@/components/signature-interactions";
+import { HeroAtmosphere, SignalSculpture } from "@/components/signal-sculpture";
 
 export const metadata: Metadata = {
   alternates: getSiteUrl() ? { canonical: "/" } : undefined,
@@ -28,6 +29,7 @@ export default function Home() {
   return (
     <main id="main">
       <section className="hero section">
+        <HeroAtmosphere />
         <div className="hero-top">
           <span className="eyebrow">
             <span className="status-dot" /> SOFTWARE ENGINEER / HUAWEI
@@ -109,6 +111,7 @@ export default function Home() {
         <i>✳</i>
         <span>KEEP EXPLORING</span>
       </div>
+      <SignalSculpture />
       <section id="work" className="section work-section">
         <div className="section-heading">
           <div>

@@ -1,0 +1,107 @@
+/* Finite kinetic accents: original copy and all target geometry stay stable. */
+.kinetic-phrase {
+  position: relative;
+  display: inline-block;
+}
+.kinetic-letter-copy {
+  position: absolute;
+  inset: 0;
+  color: var(--kinetic-ink);
+  font: inherit;
+  letter-spacing: inherit;
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+}
+.kinetic-phrase[data-kinetic-active="true"] {
+  color: transparent;
+}
+.kinetic-phrase[data-kinetic-active="true"] > .kinetic-letter-copy {
+  opacity: 1;
+}
+.kinetic-letter-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+.kinetic-letter {
+  display: inline-block;
+  transform-origin: 50% 80%;
+}
+.kinetic-letter::before,
+.kinetic-letter-space::before {
+  content: attr(data-letter);
+}
+.kinetic-letter-space {
+  white-space: pre;
+}
+.project-card,
+.resume-card {
+  /* React can reuse a card and replace its className during filtering. Anchor
+     decorative edges to the stable source classes, never an injected marker. */
+  position: relative;
+}
+.kinetic-edge {
+  display: none;
+  position: absolute;
+  inset: -1px;
+  z-index: 5;
+  padding: 2px;
+  border-radius: inherit;
+  background: radial-gradient(
+    210px circle at var(--edge-x, 50%) var(--edge-y, 50%),
+    #dbffa5,
+    #c4f56290 28%,
+    transparent 70%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+/* Unsupported masks fall back to the existing solid focus/hover borders. */
+@supports (mask-composite: exclude) or (-webkit-mask-composite: xor) {
+  .kinetic-edge {
+    display: block;
+  }
+}
+.project-card[data-edge-active="true"] > .kinetic-edge,
+.resume-card[data-edge-active="true"] > .kinetic-edge {
+  opacity: 1;
+}
+.project-card:focus-within > .kinetic-edge,
+.resume-card:focus-within > .kinetic-edge {
+  background: var(--lime);
+  opacity: 1;
+}
+/* CV links are substantial targets, not objects that move away from a pointer. */
+.resume-card:hover {
+  transform: none;
+}
+.resume-card:focus-visible {
+  border-color: var(--lime);
+}
+.contact-heading:focus-visible em {
+  text-decoration: underline;
+  text-decoration-thickness: 0.025em;
+  text-underline-offset: 0.13em;
+}
+@media (prefers-reduced-motion: reduce), (hover: none), (pointer: coarse) {
+  .kinetic-letter-copy,
+  .kinetic-edge {
+    display: none;
+  }
+  .kinetic-phrase[data-kinetic-active="true"] {
+    color: var(--kinetic-ink);
+  }
+  .resume-card,
+  .kinetic-edge {
+    transition: none;
+  }
+}

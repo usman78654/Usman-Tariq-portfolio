@@ -47,18 +47,22 @@ test("signature desk, atlas and personal stack remain accessible", async ({
 test("signature effects respect reduced motion", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
-  expect(
-    await page
-      .locator(".signature-word")
-      .evaluate((el) => getComputedStyle(el, "::after").animationName),
-  ).toBe("none");
+  await expect
+    .poll(() =>
+      page
+        .locator(".signature-word")
+        .evaluate((el) => getComputedStyle(el, "::after").animationName),
+    )
+    .toBe("none");
   await page.getByRole("button", { name: "Look inside" }).first().click();
-  expect(
-    await page
-      .locator(".surface-system-reveal")
-      .first()
-      .evaluate((el) => getComputedStyle(el).animationName),
-  ).toBe("none");
+  await expect
+    .poll(() =>
+      page
+        .locator(".surface-system-reveal")
+        .first()
+        .evaluate((el) => getComputedStyle(el).animationName),
+    )
+    .toBe("none");
   await page.getByRole("button", { name: "Map view", exact: true }).click();
   await expect(
     page.getByRole("region", { name: "Project atlas" }),
