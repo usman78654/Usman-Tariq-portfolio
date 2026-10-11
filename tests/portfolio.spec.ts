@@ -13,7 +13,7 @@ test("homepage, CV downloads, and accessibility", async ({
   );
   await expect(
     page.getByRole("img", { name: "Portrait of Usman Tariq" }),
-  ).toBeVisible();
+  ).toHaveCount(0);
   expect(
     (
       await new AxeBuilder({ page })

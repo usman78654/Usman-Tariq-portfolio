@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowDown,
@@ -28,7 +27,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main id="main">
-      <section className="hero section">
+      <section className="hero section hero-editorial">
         <HeroAtmosphere />
         <div className="hero-top">
           <span className="eyebrow">
@@ -43,9 +42,7 @@ export default function Home() {
               USMAN
             </span>
             <h1>
-              I make
-              <br />
-              complex things
+              I make complex things
               <br />
               <span className="hero-last">
                 <em>make sense.</em>
@@ -65,20 +62,7 @@ export default function Home() {
               <CVChooser />
             </div>
           </div>
-          <div className="portrait-composition">
-            <div className="portrait-frame">
-              <Image
-                src="/images/usman-tariq.png"
-                alt="Portrait of Usman Tariq"
-                width={1792}
-                height={2151}
-                priority
-                sizes="(max-width: 760px) 80vw, 32vw"
-              />
-              <span className="portrait-caption">
-                A person behind the projects.
-              </span>
-            </div>
+          <div className="hero-project-entry">
             <EngineeringDesk />
           </div>
         </div>

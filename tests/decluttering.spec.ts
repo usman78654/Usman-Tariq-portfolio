@@ -9,6 +9,8 @@ test("selected work follows the hero without Signal Studio; repair remains reada
     0,
   );
   await expect(page.locator(".hero-atmosphere")).toHaveCount(1);
+  await expect(page.locator(".hero img")).toHaveCount(0);
+  await expect(page.locator(".hero-project-entry .desk-card")).toHaveCount(3);
   expect(
     await page.locator(".hero").evaluate((el) => el.nextElementSibling?.id),
   ).toBe("work");
