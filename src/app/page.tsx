@@ -9,7 +9,6 @@ import {
 } from "lucide-react";
 import { ProjectExplorer } from "@/components/project-explorer";
 import { Playground } from "@/components/playground";
-import { Reveal } from "@/components/reveal";
 import { profile, cvs, experience } from "@/content/profile";
 import type { Metadata } from "next";
 import { getSiteUrl } from "@/content/site-url";
@@ -103,36 +102,32 @@ export default function Home() {
         <span>KEEP EXPLORING</span>
       </div>
       <section id="work" className="section work-section">
-        <Reveal>
-          <div className="section-heading">
-            <div>
-              <span className="eyebrow">01 / SELECTED WORK</span>
-              <h2>
-                Ideas, turned
-                <br />
-                into <em>working things.</em>
-              </h2>
-            </div>
-            <p>
-              From making paperwork less painful to giving
+        <div className="section-heading">
+          <div>
+            <span className="eyebrow">01 / SELECTED WORK</span>
+            <h2>
+              Ideas, turned
               <br />
-              agents a reliable home. Here's the engineering
-              <br />
-              behind the interface.
-            </p>
+              into <em>working things.</em>
+            </h2>
           </div>
-        </Reveal>
+          <p>
+            From making paperwork less painful to giving
+            <br />
+            agents a reliable home. Here's the engineering
+            <br />
+            behind the interface.
+          </p>
+        </div>
         <ProjectExplorer compact />
       </section>
       <section className="approach section">
         <span className="eyebrow">02 / HOW I THINK</span>
-        <Reveal>
-          <h2>
-            The interesting part is
-            <br />
-            usually <em>under the hood.</em>
-          </h2>
-        </Reveal>
+        <h2>
+          The interesting part is
+          <br />
+          usually <em>under the hood.</em>
+        </h2>
         <div className="approach-grid">
           <div>
             <span>01</span>

@@ -7,6 +7,7 @@ import { ProjectArt } from "./project-art";
 import { architecture } from "@/content/architecture";
 import { projectVideos } from "@/content/project-videos";
 import { ProjectVideo } from "./project-video";
+import { EngineeringWalkthrough } from "./engineering-walkthrough";
 
 export function ProjectPreview({
   project,
@@ -20,6 +21,7 @@ export function ProjectPreview({
   const video = projectVideos[project.slug];
   const [selected, setSelected] = useState(0);
   const [analyzed, setAnalyzed] = useState(false);
+  const [repaired, setRepaired] = useState(false);
   const id = useId();
   const components = architecture[project.slug] ?? project.decisions;
   const media =
@@ -76,14 +78,7 @@ export function ProjectPreview({
           <span className="eyebrow">
             SIMPLIFIED ARCHITECTURE / INSPECT A COMPONENT
           </span>
-          <ol className="inside-flow">
-            {project.flow.map((node, i) => (
-              <li key={node}>
-                <span>{String(i + 1).padStart(2, "0")}</span>
-                {node}
-              </li>
-            ))}
-          </ol>
+          <EngineeringWalkthrough project={project} />
           <div
             className="inside-buttons"
             role="group"
@@ -136,7 +131,7 @@ export function ProjectPreview({
           </figcaption>
         </figure>
       ) : project.slug === "clearstep" && interactive ? (
-        <div className="document-demo">
+        <div className="document-demo" data-analyzed={analyzed}>
           <span className="eyebrow">
             INTERACTIVE ILLUSTRATION / FICTIONAL NOTICE
           </span>
@@ -145,8 +140,9 @@ export function ProjectPreview({
               <small>NORTHBRIDGE / SAMPLE NOTICE</small>
               <h3>A deadline buried in the details.</h3>
               <p>
-                Please submit your renewal form by 20 November. Include proof of
-                address. No payment is required for this sample notice.
+                Please submit your renewal form by{" "}
+                <mark className="source-deadline">20 November</mark>. Include
+                proof of address. No payment is required for this sample notice.
               </p>
               <button
                 className="button small"
@@ -163,7 +159,7 @@ export function ProjectPreview({
                   <ul>
                     <li>Submit the renewal form</li>
                     <li>Attach proof of address</li>
-                    <li>Deadline: 20 November</li>
+                    <li className="deadline-result">Deadline: 20 November</li>
                   </ul>
                   <p>Source: the fictional notice shown alongside.</p>
                 </>
@@ -183,7 +179,7 @@ export function ProjectPreview({
           </p>
         </div>
       ) : project.slug === "claimguard" ? (
-        <div className="claim-preview">
+        <div className="claim-preview" data-repaired={repaired}>
           <span className="eyebrow">ILLUSTRATION / README FIXTURE</span>
           <div className="claim-line">
             <span>ARTICLE CLAIM</span>
@@ -195,6 +191,37 @@ export function ProjectPreview({
             <strong>Three-year warranty in the FAQ</strong>
             <span className="verdict source">CHECK THE QUOTE</span>
           </div>
+          {interactive && (
+            <div className="claim-repair-demo">
+              <button
+                type="button"
+                className="button small"
+                onClick={() => setRepaired(!repaired)}
+              >
+                {repaired ? "Reset repair example" : "Show targeted repair"}
+              </button>
+              <div className="repair-example" aria-live="polite">
+                <span className="eyebrow">FICTIONAL THREE-SENTENCE SAMPLE</span>
+                <p>
+                  <span>Orion publishes a product FAQ.</span>{" "}
+                  <span
+                    className="repaired-sentence"
+                    key={repaired ? "after" : "before"}
+                  >
+                    {repaired
+                      ? "The warranty lasts three years."
+                      : "The warranty lasts two years."}
+                  </span>{" "}
+                  <span>Customers can read it before buying.</span>
+                </p>
+                <small>
+                  {repaired
+                    ? "Only the middle sentence changed; surrounding text stays identical."
+                    : "Compare the middle sentence with the documented source above."}
+                </small>
+              </div>
+            </div>
+          )}
           <p>
             Repair only the failing sentence.
             <br />

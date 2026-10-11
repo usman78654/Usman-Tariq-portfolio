@@ -4,6 +4,8 @@ import { getSiteUrl } from "@/content/site-url";
 import "./globals.css";
 import "./improvements.css";
 import "./hierarchy.css";
+import "./animations.css";
+import { AttentionMotion } from "@/components/attention-motion";
 
 export const metadata: Metadata = {
   metadataBase: getSiteUrl(),
@@ -31,6 +33,7 @@ export default function RootLayout({
           Skip to content
         </a>
         <Header />
+        <AttentionMotion />
         {children}
         <Footer />
       </body>

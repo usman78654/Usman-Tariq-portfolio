@@ -338,3 +338,9 @@ Status: Ready for review. Production build, TypeScript, and all 18 desktop/mobil
 - Added reusable, user-controlled video playback to project previews and case studies. Mindplay's supplied animation is labelled as a visual explanation; the existing ProShop video remains actual QA footage.
 - Inspected all nine featured repositories: only ProShop has a checked-in video asset. Mindplay uses the supplied local video; the other seven need recordings before playback can be added. External video links not checked into a repository may still exist.
 - Preserve local original media; publish separate public copies. No autoplay, and video data is not preloaded.
+
+# Purposeful motion — October 11, 2026
+
+Status: Ready for review. All nine features in [animations.md](animations.md) are implemented/refined and verified. Production build, TypeScript, formatting, and all 28 desktop/mobile Chromium checks pass.
+
+Added directed hero/section cues, clearer card focus, title/preview continuity, visible filter counts, nine user-controlled engineering walkthroughs, source-to-output and bounded-repair examples, local recovery cues, and a moving case-navigation marker. Removed the endlessly rotating hero star. Narrow-card flows were tightened after screenshot review; no-JavaScript and reduced-motion paths remain usable. Videos remain opt-in, and illustrations do not imply live-system or clinical validation.

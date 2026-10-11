@@ -15,7 +15,7 @@ const stages = [
     title: "A worker claims it",
     text: "An available worker claims the task with a lease. Other workers can pick up other jobs.",
     event: "lease.acquired",
-    node: 1,
+    node: 2,
   },
   {
     title: "Imagine the worker stops",
@@ -80,6 +80,7 @@ export function Playground() {
         </div>
         <div
           className="simulation-map"
+          data-recovery-step={step}
           aria-label="Task moves from supervisor through durable queue and two workers to a saved result"
         >
           {["Supervisor", "Queue", "Worker 01", "Worker 02", "Result"].map(
@@ -129,7 +130,9 @@ export function Playground() {
           <span className="sim-event">
             0{step + 1} / 05 · {stage.event}
           </span>
-          <h3>{stage.title}</h3>
+          <h3 key={`${scenario}-${step}`} className="recovery-stage-heading">
+            {stage.title}
+          </h3>
           <p>{stage.text}</p>
         </div>
         <div className="simulation-actions">

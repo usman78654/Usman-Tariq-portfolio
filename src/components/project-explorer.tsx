@@ -59,7 +59,13 @@ export function ProjectCard({
           <span>{project.status}</span>
         </div>
         <Link href={`/projects/${project.slug}`} className="project-title-link">
-          <h3>{project.title}</h3>
+          <ViewTransition
+            name={`project-title-${project.slug}`}
+            share="project-title-morph"
+            default="none"
+          >
+            <h3>{project.title}</h3>
+          </ViewTransition>
           <ArrowUpRight size={25} />
         </Link>
         <p>{project.summary}</p>
@@ -152,6 +158,15 @@ export function ProjectExplorer({ compact = false }: { compact?: boolean }) {
             />
           </label>
         )}
+        <p
+          className="filter-result-count"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          <strong>{visible.length}</strong>{" "}
+          {visible.length === 1 ? "project" : "projects"} shown
+        </p>
       </div>
       {cv && (
         <div className="cv-recommendation">
@@ -161,9 +176,6 @@ export function ProjectExplorer({ compact = false }: { compact?: boolean }) {
           </a>
         </div>
       )}
-      <p className="sr-only" role="status">
-        {visible.length} featured projects shown.
-      </p>
       {visible.length ? (
         <div className={`project-grid ${compact ? "curated-grid" : ""}`}>
           {visible.map((p, i) => (

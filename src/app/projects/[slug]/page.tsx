@@ -60,10 +60,16 @@ export default async function ProjectPage({
             <span className="eyebrow">
               {p.category} / {p.status}
             </span>
-            <h1>
-              {p.title}
-              <span>.</span>
-            </h1>
+            <ViewTransition
+              name={`project-title-${p.slug}`}
+              share="project-title-morph"
+              default="none"
+            >
+              <h1>
+                {p.title}
+                <span>.</span>
+              </h1>
+            </ViewTransition>
             <p>{p.subtitle}</p>
           </div>
           <a
