@@ -1,0 +1,330 @@
+.hero-copy {
+  position: relative;
+  isolation: isolate;
+}
+.signature-word {
+  display: block;
+  width: fit-content;
+  font-size: clamp(30px, 4vw, 64px);
+  font-weight: 900;
+  letter-spacing: 0.13em;
+  line-height: 1.1;
+  color: transparent;
+  -webkit-text-stroke: 1px currentColor;
+  -webkit-text-stroke-color: var(--muted, #a3a39a);
+  margin: 14px 0;
+  position: relative;
+}
+.signature-word::after {
+  content: "USMAN";
+  position: absolute;
+  inset: 0;
+  color: var(--lime, #d8f36a);
+  -webkit-text-stroke: 0;
+  clip-path: inset(0 0 0 100%);
+  animation: signature-resolve 550ms 100ms both;
+}
+@keyframes signature-resolve {
+  to {
+    clip-path: inset(0);
+  }
+}
+.engineering-desk {
+  position: relative;
+  margin-top: 38px;
+  z-index: 2;
+}
+.portrait-composition .portrait-sticker {
+  bottom: 225px;
+}
+.engineering-desk > .eyebrow {
+  font-size: 12px;
+}
+.desk-layers {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+  margin-top: 16px;
+  perspective: 900px;
+}
+.desk-card {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 16px 10px;
+  background: #1c201b;
+  color: #f4f4e9;
+  border: 1px solid #515749;
+  border-radius: 9px;
+  transform: rotateX(var(--desk-y)) rotateY(var(--desk-x));
+  transition:
+    transform 180ms ease-out,
+    border-color 180ms;
+  text-decoration: none;
+}
+.desk-card:nth-child(2) {
+  margin-top: -9px;
+  margin-bottom: 9px;
+}
+.desk-card > svg:first-child {
+  color: #d8f36a;
+}
+.desk-card strong {
+  font-size: 14px;
+}
+.desk-card small {
+  font-size: 11px;
+  line-height: 1.5;
+  color: #c7cdc1;
+}
+.desk-card:hover,
+.desk-card:focus-visible {
+  border-color: #d8f36a;
+  box-shadow: 0 8px 20px #0002;
+}
+.surface-system-reveal {
+  animation: system-uncover 360ms ease-out both;
+}
+@keyframes system-uncover {
+  from {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  }
+  to {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+.collection-view,
+.atlas-themes,
+.snapshot-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.collection-view button,
+.atlas-themes button,
+.snapshot-controls button {
+  border: 1px solid #72796c;
+  background: transparent;
+  color: inherit;
+  border-radius: 6px;
+  padding: 10px 15px;
+  min-height: 44px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.collection-view button[aria-pressed="true"],
+.atlas-themes button[aria-pressed="true"] {
+  background: #d8f36a;
+  color: #172010;
+  border-color: #d8f36a;
+}
+.project-atlas {
+  padding: clamp(20px, 4vw, 48px);
+  border: 1px solid #69705f;
+  border-radius: 14px;
+  background: #151a15;
+  color: #f4f4e9;
+}
+.atlas-intro h3 {
+  font-size: clamp(25px, 3vw, 40px);
+  margin: 16px 0;
+}
+.atlas-intro p,
+.atlas-description {
+  color: #c7cdc1;
+  line-height: 1.7;
+  margin: 16px 0 24px;
+}
+.atlas-network {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 30px;
+  align-items: center;
+}
+.atlas-hub {
+  border: 1px solid #d8f36a;
+  border-radius: 12px;
+  padding: 24px 15px;
+  color: #d8f36a;
+}
+.atlas-hub span {
+  display: block;
+  font-size: 36px;
+}
+.atlas-network ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.atlas-network li {
+  position: relative;
+  padding-top: 12px;
+}
+.atlas-route {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #50594c;
+}
+.atlas-network li[data-connected="true"] .atlas-route {
+  background: #d8f36a;
+  transform-origin: left;
+  animation: trace-thread 350ms ease-out;
+}
+@keyframes trace-thread {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.atlas-network a {
+  display: grid;
+  grid-template-columns: 1fr 20px;
+  gap: 8px;
+  border: 1px solid #596150;
+  border-radius: 8px;
+  padding: 18px;
+  color: inherit;
+  text-decoration: none;
+  min-height: 108px;
+}
+.atlas-network li[data-connected="true"] a {
+  border-color: #d8f36a;
+  background: #d8f36a0a;
+}
+.atlas-network a small {
+  grid-row: 2;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #c7cdc1;
+}
+.atlas-network a svg {
+  grid-column: 2;
+  grid-row: 1;
+}
+.personal-snapshots {
+  margin: 30px 0;
+  padding: 24px;
+  border: 1px solid #70776a;
+  border-radius: 12px;
+}
+.snapshot-stack {
+  position: relative;
+  isolation: isolate;
+  margin: 24px 8px;
+}
+.snapshot-stack::before,
+.snapshot-stack::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid #77806d;
+  background: #242b21;
+  border-radius: 10px;
+  z-index: -1;
+  transform: rotate(-3deg);
+}
+.snapshot-stack::after {
+  transform: rotate(2deg);
+  background: #313b29;
+}
+.snapshot-card {
+  min-height: 180px;
+  padding: 25px;
+  background: #d8f36a;
+  color: #172010;
+  border-radius: 10px;
+  animation: snapshot-arrive 240ms ease-out;
+}
+.snapshot-card h3 {
+  font-size: 26px;
+  margin: 12px 0;
+}
+.snapshot-card p {
+  color: #283523;
+  margin: 0;
+  line-height: 1.6;
+}
+@keyframes snapshot-arrive {
+  from {
+    transform: rotate(-2deg) translateY(6px);
+  }
+  to {
+    transform: none;
+  }
+}
+.snapshot-note {
+  display: block;
+  font-size: 12px;
+  line-height: 1.8;
+  margin-top: 18px;
+}
+@media (max-width: 760px) {
+  .desk-layers {
+    grid-template-columns: 1fr;
+  }
+  .desk-card {
+    display: grid;
+    grid-template-columns: 24px 1fr 18px;
+    padding: 12px;
+    gap: 6px 10px;
+  }
+  .desk-card:nth-child(2) {
+    margin: 0;
+  }
+  .desk-card small {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  .desk-card > svg:last-child {
+    grid-column: 3;
+    grid-row: 1;
+  }
+  .portrait-composition .portrait-sticker {
+    bottom: 300px;
+  }
+  .atlas-network {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .atlas-hub {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+  }
+  .atlas-network ul {
+    grid-template-columns: 1fr;
+  }
+  .engineering-desk {
+    margin-top: 28px;
+  }
+  .signature-word {
+    font-size: 32px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .signature-word::after,
+  .surface-system-reveal,
+  .atlas-route,
+  .snapshot-card {
+    animation: none !important;
+    clip-path: none;
+  }
+  .desk-card {
+    transform: none !important;
+    transition: none;
+  }
+}
+@media (hover: none) {
+  .desk-card {
+    transform: none;
+  }
+}

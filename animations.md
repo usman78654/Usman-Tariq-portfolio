@@ -79,3 +79,19 @@ Build and typecheck; desktop/mobile Chromium regression tests; test manual/play/
 - Optional image zoom was intentionally omitted: card focus and the link-arrow cue are sufficient, and the real evidence screenshots should remain stable. No further media, account, or user-content input is needed for this animation pass.
 
 Implementation: `src/app/animations.css`, `src/components/attention-motion.tsx`, `src/components/engineering-walkthrough.tsx`, `src/content/walkthroughs.ts`, and refinements to previews, explorer, case navigation, playground, layout, and home/case routes. Regression coverage: `tests/animations.spec.ts`.
+
+## Signature interaction extension
+
+Status: Implemented. `[██████████] 100% — 5/5 signature features implemented`. The original 9/9 tracker above describes the earlier release, not this extension. Production build and formatting pass; 32 desktop/mobile Chromium regression checks pass, including new accessibility and reduced-motion checks. Mobile desk cards were refined into compact rows after screenshot review, with a follow-up signature regression run. Real Safari/Firefox and recruitment outcomes remain unverified.
+
+| Feature              | Implementation                                                                                            | Remaining input                                                      |
+| -------------------- | --------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| Engineering desk     | Three real project links under the portrait; gentle mouse-only perspective, stable keyboard/touch targets | None                                                                 |
+| Surface → system     | Short clipping-mask reveal when Look inside opens; existing architecture and controls preserved           | None                                                                 |
+| Signature typography | Outlined USMAN resolves into lime once; main headline stays steady                                        | None                                                                 |
+| Project atlas        | Optional Map view, theme connections, current filters and case links; normal cards remain default         | None                                                                 |
+| Personal snapshots   | Manual previous/next stack using confirmed perfume collecting, gaming, reading and singing interests      | Optional real hobby photographs; typographic cards work without them |
+
+The atlas is an editorial grouping, never a proficiency ranking. Screenshots and Mindplay media retain their provenance. No fabricated hobbies, photos, live output, or new recordings. All new movement has a reduced-motion static alternative; no automatic card cycling, scroll hijacking, custom cursor or heavy 3D dependency.
+
+References: [Eduard Bodak's creator breakdown](https://tympanus.net/codrops/2025/07/29/built-to-move-a-closer-look-at-the-animations-behind-eduard-bodaks-portfolio/) for pointer-responsive depth; [clip-path experiments](https://tympanus.net/codrops/2023/03/01/double-image-hover-effects-with-clip-path-animations/) for surface/system masking; [kinetic typography](https://tympanus.net/codrops/2021/09/29/kinetic-typography-page-transition/) for identity emphasis; [SVG map demo](https://tympanus.net/Tutorials/ScrollMap/) for relationship tracing; [image-motion experiments](https://tympanus.net/codrops/2023/10/18/ideas-for-image-motion-trail-animations/) for the bounded personal-card adaptation. These are design inspirations, not evidence of improved recruiting outcomes.

@@ -8,6 +8,7 @@ import { projects, archivedWork, type Project } from "@/content/projects";
 import { focuses, cvs, type Focus } from "@/content/profile";
 import { ProjectPreview } from "./project-preview";
 import { projectOrder } from "@/content/curation";
+import { ProjectAtlas } from "./signature-interactions";
 
 function validFocus(value: string | null): Focus {
   return focuses.some((f) => f.id === value) ? (value as Focus) : "all";
@@ -82,6 +83,7 @@ export function ProjectCard({
 export function ProjectExplorer({ compact = false }: { compact?: boolean }) {
   const [focus, setFocus] = useState<Focus>("all");
   const [search, setSearch] = useState("");
+  const [view, setView] = useState<"cards" | "atlas">("cards");
   const reduced = useReducedMotion();
   useEffect(() => {
     const sync = () =>
@@ -122,6 +124,26 @@ export function ProjectExplorer({ compact = false }: { compact?: boolean }) {
   return (
     <div className="explorer">
       <div className="explorer-controls">
+        <div
+          className="collection-view"
+          role="group"
+          aria-label="Project collection view"
+        >
+          <button
+            type="button"
+            aria-pressed={view === "cards"}
+            onClick={() => setView("cards")}
+          >
+            Cards
+          </button>
+          <button
+            type="button"
+            aria-pressed={view === "atlas"}
+            onClick={() => setView("atlas")}
+          >
+            Map view
+          </button>
+        </div>
         <div
           className="filter-tabs"
           role="group"
@@ -176,7 +198,9 @@ export function ProjectExplorer({ compact = false }: { compact?: boolean }) {
           </a>
         </div>
       )}
-      {visible.length ? (
+      {visible.length && view === "atlas" ? (
+        <ProjectAtlas visible={visible} />
+      ) : visible.length ? (
         <div className={`project-grid ${compact ? "curated-grid" : ""}`}>
           {visible.map((p, i) => (
             <motion.div

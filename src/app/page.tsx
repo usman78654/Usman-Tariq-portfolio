@@ -15,6 +15,10 @@ import { getSiteUrl } from "@/content/site-url";
 import { CopyEmail, CVChooser } from "@/components/contact-actions";
 import { BuildNotes } from "@/components/build-notes";
 import { EngineeringLab } from "@/components/engineering-lab";
+import {
+  EngineeringDesk,
+  PersonalSnapshots,
+} from "@/components/signature-interactions";
 
 export const metadata: Metadata = {
   alternates: getSiteUrl() ? { canonical: "/" } : undefined,
@@ -33,6 +37,9 @@ export default function Home() {
         <div className="hero-content">
           <div className="hero-copy">
             <p className="hero-intro">Hey, I'm Usman Tariq.</p>
+            <span className="signature-word" aria-hidden="true">
+              USMAN
+            </span>
             <h1>
               I make
               <br />
@@ -83,6 +90,7 @@ export default function Home() {
               </span>
               <ArrowUpRight size={25} />
             </div>
+            <EngineeringDesk />
           </div>
         </div>
         <div className="hero-bottom">
@@ -248,6 +256,7 @@ export default function Home() {
               testing beyond the happy path.
             </p>
           </div>
+          <PersonalSnapshots />
           <a
             href={profile.linkedin}
             target="_blank"

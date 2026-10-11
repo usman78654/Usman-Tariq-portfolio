@@ -35,7 +35,7 @@ export function AttentionMotion() {
     const hero = document.querySelector(".hero");
     if (hero && hero.getBoundingClientRect().top > -80) {
       move(hero.querySelector(".hero-intro"), 6, 300);
-      move(hero.querySelector("h1"), 12, 420, 50);
+      // Signature typography supplies the hero's main motion; keep the headline steady.
     }
     if (!window.IntersectionObserver)
       return () => animations.forEach((a) => a.cancel());

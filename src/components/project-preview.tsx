@@ -33,7 +33,10 @@ export function ProjectPreview({
           ? "/projects/mindplay-poster.png"
           : null;
   return (
-    <div className={`project-preview preview-${project.slug}`}>
+    <div
+      className={`project-preview preview-${project.slug}`}
+      data-preview-mode={inside ? "inside" : watching ? "video" : "surface"}
+    >
       {interactive && (
         <div
           className="preview-toolbar"
@@ -74,7 +77,7 @@ export function ProjectPreview({
       {watching && video ? (
         <ProjectVideo video={video} />
       ) : inside ? (
-        <div className="inside-panel">
+        <div className="inside-panel surface-system-reveal">
           <span className="eyebrow">
             SIMPLIFIED ARCHITECTURE / INSPECT A COMPONENT
           </span>
