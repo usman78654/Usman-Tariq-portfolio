@@ -183,28 +183,11 @@ export function ProjectPreview({
         </div>
       ) : project.slug === "claimguard" ? (
         <div className="claim-preview" data-repaired={repaired}>
-          <span className="eyebrow">ILLUSTRATION / README FIXTURE</span>
-          <div className="claim-line">
-            <span>ARTICLE CLAIM</span>
-            <strong>“two-year warranty”</strong>
-            <span className="verdict">CONTRADICTED</span>
-          </div>
-          <div className="claim-line">
-            <span>DOCUMENTED SOURCE</span>
-            <strong>Three-year warranty in the FAQ</strong>
-            <span className="verdict source">CHECK THE QUOTE</span>
-          </div>
-          {interactive && (
+          <span className="eyebrow">TARGETED REPAIR / ILLUSTRATION</span>
+          <h3 className="claim-demo-title">Fix the claim. Keep the context.</h3>
+          {interactive ? (
             <div className="claim-repair-demo">
-              <button
-                type="button"
-                className="button small"
-                onClick={() => setRepaired(!repaired)}
-              >
-                {repaired ? "Reset repair example" : "Show targeted repair"}
-              </button>
               <div className="repair-example" aria-live="polite">
-                <span className="eyebrow">FICTIONAL THREE-SENTENCE SAMPLE</span>
                 <p>
                   <span>Orion publishes a product FAQ.</span>{" "}
                   <span
@@ -220,19 +203,32 @@ export function ProjectPreview({
                 <small>
                   {repaired
                     ? "Only the middle sentence changed; surrounding text stays identical."
-                    : "Compare the middle sentence with the documented source above."}
+                    : "The middle sentence conflicts with the source."}
                 </small>
               </div>
+              <p className="claim-source">
+                <span>Source / README fixture</span>
+                <strong>Three-year warranty in the FAQ.</strong>
+              </p>
+              <button
+                type="button"
+                className="button small"
+                onClick={() => setRepaired(!repaired)}
+              >
+                {repaired ? "Reset repair example" : "Show targeted repair"}
+              </button>
+            </div>
+          ) : (
+            <div className="claim-static-example">
+              <p>“Two-year warranty” → “Three-year warranty”</p>
+              <p className="claim-source">
+                Source / README fixture: three years in the FAQ.
+              </p>
             </div>
           )}
-          <p>
-            Repair only the failing sentence.
-            <br />
-            Keep the rest byte-identical.
-          </p>
           <span className="preview-caption">
-            Read the recorded report for the real run and its known framing
-            limitation.
+            Fictional sample. Read the recorded report for the real run and its
+            framing limitation.
           </span>
         </div>
       ) : (

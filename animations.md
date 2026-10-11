@@ -98,6 +98,8 @@ References: [Eduard Bodak's creator breakdown](https://tympanus.net/codrops/2025
 
 ## Creative motion / signal → structure
 
+Update: Signal Studio, its sculpture, inspection lens, and pulse controls were removed at the owner's request during the clarity pass. The hero atmosphere, letter ripple, card edge lighting, and connected project atlas remain. Historical verification below describes the earlier release; see `decluttering.md` for the current pass.
+
 Status: Implemented and verified. `[██████████] 100% — 6/6 creative effects checked`. Production build, TypeScript, formatting and 46 desktop/mobile Chromium checks pass. This pass deliberately increases expressiveness without making navigation depend on animation; the progress bar is not a usability or hiring-outcome score.
 
 | Effect                             | Where and trigger                                                                                        | Purpose                                                                               | Status      |

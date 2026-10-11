@@ -19,7 +19,7 @@ import {
   EngineeringDesk,
   PersonalSnapshots,
 } from "@/components/signature-interactions";
-import { HeroAtmosphere, SignalSculpture } from "@/components/signal-sculpture";
+import { HeroAtmosphere } from "@/components/hero-atmosphere";
 
 export const metadata: Metadata = {
   alternates: getSiteUrl() ? { canonical: "/" } : undefined,
@@ -79,19 +79,6 @@ export default function Home() {
                 A person behind the projects.
               </span>
             </div>
-            <span className="portrait-orbit" aria-hidden="true">
-              CURIOUS BY DEFAULT ↗
-            </span>
-            <div className="portrait-sticker">
-              <span>
-                BUILD.
-                <br />
-                BREAK.
-                <br />
-                LEARN.
-              </span>
-              <ArrowUpRight size={25} />
-            </div>
             <EngineeringDesk />
           </div>
         </div>
@@ -102,16 +89,6 @@ export default function Home() {
           </Link>
         </div>
       </section>
-      <div className="discipline-strip" aria-hidden="true">
-        <span>THINK IT THROUGH</span>
-        <i>✳</i>
-        <span>BUILD IT WELL</span>
-        <i>✳</i>
-        <span>TEST THE ASSUMPTIONS</span>
-        <i>✳</i>
-        <span>KEEP EXPLORING</span>
-      </div>
-      <SignalSculpture />
       <section id="work" className="section work-section">
         <div className="section-heading">
           <div>
@@ -123,11 +100,8 @@ export default function Home() {
             </h2>
           </div>
           <p>
-            From making paperwork less painful to giving
-            <br />
-            agents a reliable home. Here's the engineering
-            <br />
-            behind the interface.
+            Six selected projects. Explore a preview, then open the case study
+            for the engineering and evidence.
           </p>
         </div>
         <ProjectExplorer compact />
@@ -242,17 +216,6 @@ export default function Home() {
             <span>German · Basic</span>
           </div>
           <div className="personal-notebook">
-            <span className="eyebrow">AWAY FROM THE EDITOR</span>
-            <p>
-              Collecting perfumes. Getting lost in a good book. Gaming, and
-              singing a little.
-            </p>
-            <div className="interest-tags">
-              <span>Perfume collecting</span>
-              <span>Gaming</span>
-              <span>Reading</span>
-              <span>Singing</span>
-            </div>
             <span className="eyebrow">THREADS IN MY PROJECTS</span>
             <p>
               Making AI outputs inspectable, building recoverable systems, and

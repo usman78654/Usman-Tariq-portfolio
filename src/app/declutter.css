@@ -1,0 +1,152 @@
+/* Calm chrome, not smaller information. Existing motion remains untouched. */
+.hero-atmosphere {
+  opacity: 0.09;
+}
+.work-section {
+  border-top: 1px solid #414a38;
+}
+.section-heading > p {
+  max-width: 34ch;
+  line-height: 1.8;
+}
+.project-card {
+  background: #1b2119;
+}
+.project-card .project-info {
+  padding: 30px;
+}
+.project-eyebrow {
+  margin-bottom: 18px;
+  gap: 8px 20px;
+}
+.project-eyebrow > span:last-child {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  font-size: 14px;
+  color: #c6d3b9;
+}
+.project-card .tags {
+  gap: 8px 16px;
+  margin-top: 22px;
+}
+.project-card .tags > span {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  color: #c0c9b8;
+  font-size: 13px;
+}
+.preview-toolbar {
+  justify-content: flex-start;
+  gap: 6px;
+  padding: 12px 20px;
+  background: #161c15;
+}
+.preview-toolbar button {
+  min-height: 44px;
+  border-radius: 6px;
+  border-color: transparent;
+  font-size: 14px;
+}
+.preview-toolbar button[aria-pressed="true"] {
+  background: #303c25;
+  color: #e6f1da;
+  border-color: #667954;
+}
+.preview-toolbar button:hover {
+  border-color: #8b9e75;
+}
+.claim-preview {
+  padding: 30px;
+  min-height: 0;
+  background: #171e19;
+}
+.claim-preview > .eyebrow {
+  color: #c5d0bf;
+}
+.claim-demo-title {
+  margin: 22px 0 26px;
+  font-size: clamp(25px, 2.3vw, 34px);
+  line-height: 1.2;
+  max-width: 20ch;
+}
+.claim-preview .claim-repair-demo {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+.claim-preview .repair-example {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: 0;
+}
+.claim-preview .repair-example > p {
+  margin: 0 0 14px;
+  font-size: 16px;
+  line-height: 1.9;
+  color: #c2cbbd;
+}
+.claim-preview .repaired-sentence {
+  color: #f4f5ed;
+  display: inline;
+  border-radius: 3px;
+}
+.claim-preview .repair-example small {
+  display: block;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #becab5;
+}
+.claim-preview .claim-source {
+  margin: 24px 0;
+  padding-top: 20px;
+  border-top: 1px solid #3f4b3e;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.claim-source > span {
+  display: block;
+  color: #bdc9b5;
+  margin-bottom: 5px;
+}
+.claim-source > strong {
+  font-weight: 500;
+  color: #e9efdf;
+}
+.claim-preview .button.small {
+  min-height: 44px;
+  font-size: 14px;
+}
+.claim-preview > .preview-caption {
+  display: block;
+  margin-top: 24px;
+  font-size: 13px !important;
+  line-height: 1.7;
+}
+.claim-static-example > p {
+  font-size: 20px;
+  line-height: 1.6;
+}
+.about-copy {
+  max-width: 65ch;
+}
+.personal-notebook {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+@media (max-width: 760px) {
+  .project-card .project-info,
+  .claim-preview {
+    padding: 24px;
+  }
+  .claim-demo-title {
+    margin: 20px 0;
+  }
+  .section-heading > p {
+    max-width: 100%;
+  }
+}

@@ -70,8 +70,11 @@ export function ProjectCard({
           <ArrowUpRight size={25} />
         </Link>
         <p>{project.summary}</p>
-        <div className="tags">
-          {project.stack.map((s) => (
+        <div
+          className="tags"
+          aria-label="Selected technologies; full stack in case study"
+        >
+          {project.stack.slice(0, 3).map((s) => (
             <span key={s}>{s}</span>
           ))}
         </div>

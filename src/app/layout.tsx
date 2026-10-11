@@ -9,6 +9,7 @@ import "./signature.css";
 import "./creative-motion.css";
 import "./kinetic-details.css";
 import "./atlas-upgrade.css";
+import "./declutter.css";
 import { AttentionMotion } from "@/components/attention-motion";
 import { KineticDetails } from "@/components/kinetic-details";
 
