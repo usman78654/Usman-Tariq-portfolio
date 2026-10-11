@@ -1,6 +1,6 @@
 # Portfolio clarity pass
 
-Status: `[#########-] 90%` — implementation and local verification complete; production release pending.
+Status: `[##########] 100%` — implemented, verified, and deployed.
 
 ## Implementation plan
 
@@ -22,5 +22,6 @@ Status: `[#########-] 90%` — implementation and local verification complete; p
 - TypeScript and production build pass (21 generated routes).
 - 40 desktop/mobile Chromium checks pass, including accessibility scans, reduced motion, project videos, filters, case links, and retained animations.
 - Desktop/mobile hero and ClaimGuard screenshots reviewed.
+- Vercel production release is Ready; live mobile smoke check confirms the section removal, targeted repair, no horizontal overflow, and no page errors.
 - Removed Signal Studio source and obsolete tests are recoverable in Git history.
 - Real Safari/Firefox and recruiting outcomes are not measured.
