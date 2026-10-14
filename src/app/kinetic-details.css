@@ -20,6 +20,7 @@
   opacity: 1;
 }
 .kinetic-letter-word {
+  position: absolute;
   display: inline-block;
   white-space: nowrap;
 }

@@ -18,25 +18,29 @@ export function KineticDetails() {
     let discoveryFrame = 0;
 
     function enhancePhrase(element: HTMLElement) {
-      const text = element.textContent?.trim();
+      const source = element.firstChild;
+      if (!source || source.nodeType !== Node.TEXT_NODE) return;
+      const sourceText = source.textContent ?? "";
+      const text = sourceText.trim();
       if (!text) return;
       const ink = getComputedStyle(element).color;
       const overlay = document.createElement("span");
       overlay.className = "kinetic-letter-copy";
       overlay.setAttribute("aria-hidden", "true");
       const letters: HTMLElement[] = [];
+      const words: { group: HTMLElement; range: Range }[] = [];
+      let cursor = sourceText.indexOf(text);
 
       // Generated-content copies leave the original literal text node intact,
       // including its accessible name, selection, and no-JS presentation.
-      text.split(" ").forEach((word, wordIndex) => {
-        if (wordIndex) {
-          const space = document.createElement("span");
-          space.className = "kinetic-letter-space";
-          space.dataset.letter = " ";
-          overlay.append(space);
-        }
+      text.split(" ").forEach((word) => {
         const group = document.createElement("span");
         group.className = "kinetic-letter-word";
+        const range = document.createRange();
+        range.setStart(source, cursor);
+        range.setEnd(source, cursor + word.length);
+        cursor += word.length + 1;
+        words.push({ group, range });
         Array.from(word).forEach((character) => {
           const letter = document.createElement("span");
           letter.className = "kinetic-letter";
@@ -50,6 +54,25 @@ export function KineticDetails() {
       element.classList.add("kinetic-phrase");
       element.style.setProperty("--kinetic-ink", ink);
       element.append(overlay);
+
+      // Per-letter spans lose cross-letter kerning. Let the original text decide
+      // each word's line and position instead of reflowing the decorative copy.
+      // Otherwise a fractionally wider "useful" wraps into the contact details.
+      function positionWords() {
+        const bounds = element.getBoundingClientRect();
+        const firstLine = words[0].range.getBoundingClientRect().top;
+        words.forEach(({ group, range }) => {
+          const word = range.getBoundingClientRect();
+          group.style.left = `${word.left - bounds.left}px`;
+          group.style.top = `${word.top - firstLine}px`;
+        });
+      }
+      positionWords();
+      const resizeObserver = window.ResizeObserver
+        ? new ResizeObserver(positionWords)
+        : undefined;
+      resizeObserver?.observe(element);
+      window.addEventListener("resize", positionWords);
       const trigger =
         element.closest<HTMLElement>(".contact-heading") ?? element;
       let animations: Animation[] = [];
@@ -96,6 +119,8 @@ export function KineticDetails() {
       trigger.addEventListener("pointerleave", stop);
       cleanups.set(element, () => {
         stop();
+        resizeObserver?.disconnect();
+        window.removeEventListener("resize", positionWords);
         trigger.removeEventListener("pointerenter", ripple);
         trigger.removeEventListener("pointerleave", stop);
         overlay.remove();

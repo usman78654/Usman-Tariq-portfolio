@@ -1,5 +1,93 @@
 import { expect, test } from "@playwright/test";
 
+test("footer letter ripple follows the source lines without crossing the contact divider", async ({
+  page,
+}, info) => {
+  await page.goto("/");
+  const phrase = page.locator(".contact-heading > em");
+  await expect(phrase).toHaveText("something useful.");
+  await expect(page.locator(".contact-heading")).toHaveAttribute(
+    "href",
+    /^mailto:/,
+  );
+  if (info.project.name === "mobile") {
+    await expect(phrase.locator(".kinetic-letter-copy")).toHaveCount(0);
+    await phrase.scrollIntoViewIfNeeded();
+    expect(
+      await phrase.evaluate(
+        (el) =>
+          el.getBoundingClientRect().bottom <
+          document.querySelector(".contact-bottom")!.getBoundingClientRect()
+            .top,
+      ),
+    ).toBe(true);
+    return;
+  }
+  for (const width of [1440, 1024, 768, 640, 390, 320]) {
+    await page.setViewportSize({ width, height: 1000 });
+    await page.mouse.move(0, 0);
+    await phrase.scrollIntoViewIfNeeded();
+    await phrase.hover();
+    await expect(phrase).toHaveAttribute("data-kinetic-active", "true");
+    for (const time of [0, 180, 320, 460]) {
+      const geometry = await phrase.evaluate((element, time) => {
+        for (const animation of element.getAnimations({ subtree: true })) {
+          animation.pause();
+          animation.currentTime = time;
+        }
+        const node = element.firstChild!;
+        let offset = 0;
+        const positions = Array.from(
+          element.querySelectorAll(".kinetic-letter-word"),
+          (word) => {
+            const text = Array.from(
+              word.querySelectorAll<HTMLElement>(".kinetic-letter"),
+              (letter) => letter.dataset.letter,
+            ).join("");
+            const range = document.createRange();
+            range.setStart(node, offset);
+            range.setEnd(node, offset + text.length);
+            offset += text.length + 1;
+            return {
+              original: range.getBoundingClientRect().top,
+              copy: word.getBoundingClientRect().top,
+            };
+          },
+        );
+        const divider = document
+          .querySelector(".contact-bottom")!
+          .getBoundingClientRect().top;
+        const letters = Array.from(
+          element.querySelectorAll(".kinetic-letter"),
+          (letter) => letter.getBoundingClientRect().bottom,
+        );
+        return {
+          positions,
+          divider,
+          lowest: Math.max(...letters),
+          overflow: document.documentElement.scrollWidth > innerWidth,
+        };
+      }, time);
+      // Relative line placement is independent of font ascent/line-box metrics.
+      expect(
+        Math.abs(
+          geometry.positions[1].copy -
+            geometry.positions[0].copy -
+            (geometry.positions[1].original - geometry.positions[0].original),
+        ),
+      ).toBeLessThan(1);
+      expect(geometry.lowest).toBeLessThan(geometry.divider - 8);
+      expect(geometry.overflow).toBe(false);
+    }
+    if (width === 1440 || width === 320)
+      await page
+        .locator("#contact")
+        .screenshot({ path: info.outputPath(`footer-ripple-${width}.png`) });
+    await page.mouse.move(0, 0);
+    await expect(phrase).not.toHaveAttribute("data-kinetic-active", "true");
+  }
+});
+
 test("kinetic details are finite mouse accents with stable semantic text and targets", async ({
   page,
 }, info) => {
