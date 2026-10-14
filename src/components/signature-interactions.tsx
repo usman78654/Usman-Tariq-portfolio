@@ -49,9 +49,9 @@ export function EngineeringDesk() {
             Icon: FileText,
           },
           {
-            slug: "cloudcrew",
-            title: "CloudCrew",
-            detail: "Failure → recovery",
+            slug: "forgequeue",
+            title: "ForgeQueue",
+            detail: "Jobs → durable workflows",
             Icon: Terminal,
           },
           {
@@ -138,7 +138,13 @@ const themes = [
   {
     title: "Reliability",
     text: "Inspect outputs, recover from failures, test the unhappy path.",
-    slugs: ["claimguard", "cloudcrew", "ecommerce-qa", "cross-browser-qa"],
+    slugs: [
+      "claimguard",
+      "forgequeue",
+      "cloudcrew",
+      "ecommerce-qa",
+      "cross-browser-qa",
+    ],
   },
   {
     title: "AI & interaction",

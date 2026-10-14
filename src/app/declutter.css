@@ -1,4 +1,46 @@
 /* Calm chrome, not smaller information. Existing motion remains untouched. */
+.forge-preview {
+  padding: 30px;
+  background: #171e19;
+}
+.forge-preview h3 {
+  font-size: clamp(25px, 2.3vw, 34px);
+  line-height: 1.2;
+  margin: 22px 0 26px;
+}
+.forge-report-flow {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0;
+}
+.forge-report-flow li {
+  padding: 16px 0;
+  border-top: 1px solid #3f4b3e;
+}
+.forge-report-flow span {
+  display: block;
+  color: #c2cbbd;
+  font-size: 12px;
+  line-height: 1.7;
+  margin-bottom: 5px;
+}
+.forge-report-flow strong {
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+.forge-preview .preview-caption {
+  margin: 20px 0 0;
+  font-size: 13px !important;
+  line-height: 1.7;
+}
+@media (max-width: 760px) {
+  .forge-preview {
+    padding: 24px;
+  }
+}
 .hero-editorial .hero-content {
   display: block;
   padding: clamp(36px, 5vw, 76px) 0 40px;

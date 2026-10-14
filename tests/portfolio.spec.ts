@@ -58,7 +58,7 @@ test("homepage, CV downloads, and accessibility", async ({
 
 test("shareable filters, search, and history", async ({ page }) => {
   await page.goto("/projects?focus=cloud");
-  await expect(page.locator(".project-card")).toHaveCount(2);
+  await expect(page.locator(".project-card")).toHaveCount(3);
   await expect(
     page.getByRole("button", { name: "Cloud & DevOps", exact: true }),
   ).toHaveAttribute("aria-pressed", "true");
@@ -73,14 +73,17 @@ test("shareable filters, search, and history", async ({ page }) => {
   await page
     .getByRole("searchbox", { name: "Search projects" })
     .fill("postgresql");
-  await expect(page.locator(".project-card")).toHaveCount(1);
-  await expect(page.locator(".project-card h3")).toHaveText("CloudCrew");
+  await expect(page.locator(".project-card")).toHaveCount(2);
+  await expect(page.locator(".project-title-link h3")).toHaveText([
+    "ForgeQueue",
+    "CloudCrew",
+  ]);
   await page.getByRole("searchbox").fill("unmatched-query");
   await expect(
     page.getByRole("heading", { name: "No projects match that search." }),
   ).toBeVisible();
   await page.getByRole("button", { name: "Reset filters" }).click();
-  await expect(page.locator(".project-card")).toHaveCount(9);
+  await expect(page.locator(".project-card")).toHaveCount(10);
 });
 
 test("all case-study routes and accurate security boundaries", async ({
@@ -90,6 +93,7 @@ test("all case-study routes and accurate security boundaries", async ({
   for (const slug of [
     "clearstep",
     "claimguard",
+    "forgequeue",
     "cloudcrew",
     "cipherrelay",
     "cross-browser-qa",

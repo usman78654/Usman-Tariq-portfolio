@@ -7,6 +7,38 @@ const step = (node: number, title: string, text: string): WalkthroughStep => ({
 
 // Illustrative explanations based on the reviewed case-study content, not runs.
 export const walkthroughs: Record<string, WalkthroughStep[]> = {
+  forgequeue: [
+    step(
+      0,
+      "Describe the dependencies",
+      "Submit a workflow graph. In the report example, customers and orders are independent roots; aggregation waits for both.",
+    ),
+    step(
+      1,
+      "Commit work and delivery intent",
+      "PostgreSQL stores the workflow, ready jobs, and outbox records transactionally. A broker outage does not erase the accepted work.",
+    ),
+    step(
+      2,
+      "Publish a delivery signal",
+      "The outbox relay sends job IDs to RabbitMQ with publisher confirms. Retried publication can produce duplicates; PostgreSQL guards the claim.",
+    ),
+    step(
+      3,
+      "Run a typed handler",
+      "Workers claim with a renewable lease and fencing token. The report handlers validate their inputs; permanent validation errors bypass retries.",
+    ),
+    step(
+      4,
+      "Release only ready steps",
+      "A successful fenced result supplies dependent-step inputs. The documented fixture produces a Markdown report; an invalid customer blocks reporting.",
+    ),
+    step(
+      4,
+      "Keep the guarantee precise",
+      "This is an illustrative explanation, not a running worker or a benchmark. At-least-once execution means external side effects may repeat.",
+    ),
+  ],
   clearstep: [
     step(
       0,

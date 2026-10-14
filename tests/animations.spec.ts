@@ -39,12 +39,13 @@ test("static content survives without JavaScript and normal motion has no loopin
   await context.close();
 });
 
-test("all nine projects have truthful, manually navigable engineering explanations", async ({
+test("all ten projects have truthful, manually navigable engineering explanations", async ({
   page,
 }, info) => {
   for (const slug of [
     "clearstep",
     "claimguard",
+    "forgequeue",
     "cloudcrew",
     "cipherrelay",
     "mindplay",
@@ -162,7 +163,7 @@ test("source-to-output emphasis, targeted repair, result counts, and case naviga
     .getByRole("button", { name: "Cloud & DevOps", exact: true })
     .click();
   await expect(page.locator(".filter-result-count")).toHaveText(
-    "2 projects shown",
+    "3 projects shown",
   );
   await page.goto("/projects/claimguard");
   await page

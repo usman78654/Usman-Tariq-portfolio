@@ -1,12 +1,12 @@
 # Portfolio development plan
 
-## Current implementation — October 10, 2026
+## Current implementation — October 14, 2026
 
-The local application now includes nine README-grounded case studies, role-aware curated showcases, inspectable architecture previews, real CloudCrew/QA media, three browser-local engineering experiments, three illustrated build notes, CV selection, and contact feedback. See [improvements.md](improvements.md) for acceptance/status details and [project-curation.md](project-curation.md) for selection rationale.
+The application now includes ten README-grounded case studies, role-aware curated showcases, inspectable architecture previews, real CloudCrew/QA media, three browser-local engineering experiments, three illustrated build notes, CV selection, and contact feedback. The portrait-free opening and clarity pass are live on Vercel. See [project-curation.md](project-curation.md) for selection rationale and [forgequeue-review.md](forgequeue-review.md) for the latest project review.
 
-Default featured order: ClearStep, ClaimGuard, CloudCrew, e-commerce QA, CipherRelay, cross-browser QA. The strongest relevant project leads each role path. Research/coursework remains discoverable instead of being presented as stronger production evidence. Forgequeue currently has an empty public Git tree and is labeled in progress.
+Default featured order: ClearStep, ClaimGuard, ForgeQueue, e-commerce QA, CipherRelay, Mindplay. ForgeQueue leads the cloud filter; CloudCrew and cross-browser QA remain in the full collection and relevant filters. Research/coursework remains discoverable instead of being presented as stronger production evidence. The old empty-Forgequeue observation is superseded by its October 14 source and CI review.
 
-Confirmed solo projects: ClearStep and both QA portfolios (also Forgequeue). Mindplay is team work; individual task ownership is unspecified. Other contributions are not assumed. Confirmed personal interests: perfume collecting, gaming, reading, and singing. Additional personal photos/captions are still needed. Original PDFs and portrait remain unchanged; nothing has been deployed.
+Confirmed solo projects: ClearStep, both QA portfolios, and ForgeQueue. Mindplay is team work; individual task ownership is unspecified. Other contributions are not assumed. Confirmed personal interests: perfume collecting, gaming, reading, and singing. Hobby photos are optional; the interactive typographic snapshots work without them. Original supplied assets are preserved, but the portrait is no longer rendered in the opening.
 
 ## Purpose and audience
 

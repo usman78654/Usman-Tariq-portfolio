@@ -103,6 +103,32 @@ export function ProjectPreview({
             <p>{components[selected].text}</p>
           </div>
         </div>
+      ) : project.slug === "forgequeue" ? (
+        <div className="forge-preview">
+          <span className="eyebrow">REPORT WORKFLOW / ILLUSTRATION</span>
+          <h3>Two inputs. One useful result.</h3>
+          <ol
+            className="forge-report-flow"
+            aria-label="Report demo dependencies"
+          >
+            <li>
+              <span>PARALLEL INPUTS</span>
+              <strong>Read customers + read orders</strong>
+            </li>
+            <li>
+              <span>WAIT FOR BOTH</span>
+              <strong>Validate & aggregate</strong>
+            </li>
+            <li>
+              <span>ONLY ON SUCCESS</span>
+              <strong>Write Markdown report</strong>
+            </li>
+          </ol>
+          <p className="preview-caption">
+            The repository records five fixture orders totaling $485.00. Invalid
+            input blocks the report. This diagram is not a live run.
+          </p>
+        </div>
       ) : media ? (
         <figure className="real-preview">
           <Image

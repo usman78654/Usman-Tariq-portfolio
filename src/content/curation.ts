@@ -1,15 +1,16 @@
 import type { Focus } from "./profile";
 
 // Rank by demonstrable depth, relevant engineering decisions, and inspectable
-// evidence—not stars, repository size, or CV wording. Reviewed 2026-10-10.
+// evidence—not stars, repository size, or CV wording. ForgeQueue reviewed 2026-10-14.
 export const projectOrder: Record<Focus, string[]> = {
   all: [
     "clearstep",
     "claimguard",
-    "cloudcrew",
+    "forgequeue",
     "ecommerce-qa",
     "cipherrelay",
     "mindplay",
+    "cloudcrew",
     "cross-browser-qa",
     "edime",
     "rag-pipeline",
@@ -17,16 +18,19 @@ export const projectOrder: Record<Focus, string[]> = {
   software: [
     "clearstep",
     "claimguard",
+    "forgequeue",
     "mindplay",
     "cipherrelay",
     "edime",
     "rag-pipeline",
   ],
-  cloud: ["cloudcrew", "cipherrelay"],
+  cloud: ["forgequeue", "cloudcrew", "cipherrelay"],
   qa: ["ecommerce-qa", "cross-browser-qa"],
 };
 
 export const projectScope: Record<string, string> = {
+  forgequeue:
+    "Durable Go job execution, transactional broker dispatch, typed workers, DAG orchestration, and an embedded operations console.",
   clearstep:
     "Document extraction, validated analysis, and a privacy-conscious product workflow.",
   claimguard:
@@ -48,6 +52,8 @@ export const projectScope: Record<string, string> = {
 };
 
 export const contributions: Record<string, string> = {
+  forgequeue:
+    "Solo project: backend workflow engine, worker SDK, operations console, tests, and deployment tooling. Solo ownership was confirmed by Usman.",
   clearstep:
     "Solo project: application design and implementation across the document workflow.",
   "ecommerce-qa":

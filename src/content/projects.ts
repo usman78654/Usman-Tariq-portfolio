@@ -21,8 +21,111 @@ export type Project = {
   flow: string[];
   links?: { label: string; path: string }[];
   image?: string;
+  reviewed?: string;
 };
 export const projects: Project[] = [
+  {
+    slug: "forgequeue",
+    title: "ForgeQueue",
+    subtitle: "Workflows that survive the unhappy path.",
+    summary:
+      "A Go job queue and workflow engine with durable dispatch, recoverable workers, and an operations console that makes execution inspectable.",
+    category: "Backend & workflow systems",
+    focus: ["cloud", "software"],
+    stack: [
+      "Go",
+      "PostgreSQL",
+      "RabbitMQ",
+      "TypeScript",
+      "React",
+      "OpenTelemetry",
+      "Docker",
+    ],
+    repo: "Forgequeue",
+    color: "lime",
+    visual: "cloud",
+    status: "Tested implementation",
+    reviewed: "October 14, 2026",
+    problem:
+      "Background work can fail between accepting a request, publishing it to a broker, and saving its result. Multi-step workflows also need to know which inputs are ready, which attempts failed, and whether downstream work should run at all.",
+    solution:
+      "ForgeQueue commits jobs and delivery intent together in PostgreSQL, then uses RabbitMQ to signal workers. Renewable leases and fencing tokens protect saved completion state. DAG dependencies release ready steps, typed handlers validate input, and the embedded React console exposes jobs, attempts, events, and recovery controls.",
+    decisions: [
+      {
+        title: "Commit before dispatch",
+        text: "A job and its outbox record commit in one PostgreSQL transaction. The relay publishes with RabbitMQ confirms and can retry; duplicate delivery is expected, not hidden behind an exactly-once claim.",
+      },
+      {
+        title: "Fence the saved result",
+        text: "Claiming a job advances its lease token. Completion checks that token and active state, so an old worker cannot overwrite a reclaimed attempt. External handler side effects still need application-level idempotency.",
+      },
+      {
+        title: "Make workflows do real work",
+        text: "The report example loads customers and orders independently, resolves their outputs into a validated join, and writes deterministic Markdown. Invalid customer references are permanent errors and block the downstream report.",
+      },
+      {
+        title: "Separate the worker contract",
+        text: "The public Go registry supports typed JSON inputs/results, progress, logs, context cancellation, panic containment, and permanent errors. Custom workers do not need the unsafe command handler, which is disabled by default.",
+      },
+    ],
+    evidence: [
+      {
+        label: "Reviewed commit CI",
+        value: "Passing CI",
+        context:
+          "GitHub Actions run 38591930872 passed for commit 694f400. Its configured gates include race-enabled Go tests with PostgreSQL/RabbitMQ, frontend checks, configuration validation, and image builds. This is a dated run, not a permanent guarantee.",
+      },
+      {
+        label: "Real report example",
+        value: "4-step DAG",
+        context:
+          "The repository records a local run joining three customers and five orders into a $485.00 Markdown report. These are bundled demo fixtures, not throughput measurements or real customer data.",
+      },
+      {
+        label: "Failure-oriented tests",
+        value: "Recovery + fencing",
+        context:
+          "Committed integration tests cover duplicate claims, exhausted retries, expired leases, stale-result rejection, workflow dependency release, and transactional outbox delivery.",
+      },
+      {
+        label: "Worker extension",
+        value: "Typed Go SDK",
+        context:
+          "Strict payload decoding, permanent validation failures, panic containment, and retry-safe report writing have dedicated tests and runnable custom-worker examples.",
+      },
+    ],
+    limits: [
+      "At-least-once execution does not make external side effects exactly once; handlers need their own idempotency strategy.",
+      "The checked-in load baseline is pending. No production throughput, latency, scale, uptime, or hosted deployment is claimed.",
+      "Live MinIO validation, streaming/multipart uploads, restore drills, and broader production hardening remain incomplete. The report demo writes local files, not S3 artifacts.",
+      "Schedule authorization and concurrent quota/cap enforcement need deeper hardening before multi-tenant production use. CI's coverage gate is only 5%; a passing run is not exhaustive correctness evidence.",
+      "Cron/time-zone scheduling and signed webhooks are planned. The visual builder currently supports built-in handlers; submit the report examples through the API/script.",
+    ],
+    next: "Close the authorization and concurrency edge cases, strengthen coverage around workflow failure propagation, run fresh-stack storage/chaos/load and restore checks, then capture a concise real console recording. Keep measured results tied to a commit and environment.",
+    flow: [
+      "Submit DAG",
+      "Commit state + outbox",
+      "Deliver via RabbitMQ",
+      "Run typed handlers",
+      "Persist result + release steps",
+    ],
+    links: [
+      { label: "Architecture and guarantees", path: "docs/architecture.md" },
+      {
+        label: "Report workflow and recorded result",
+        path: "examples/report-worker/README.md",
+      },
+      {
+        label: "Recovery integration tests",
+        path: "integration/distributed_test.go",
+      },
+      {
+        label: "Report workflow tests",
+        path: "integration/report_demo_test.go",
+      },
+      { label: "Remaining production work", path: "improvements.md" },
+    ],
+  },
   {
     slug: "claimguard",
     title: "ClaimGuard",
@@ -705,5 +808,4 @@ export const archivedWork = [
     category: "Full stack",
   },
   { repo: "E2E-ChatApp", title: "End-to-end chat app", category: "Security" },
-  { repo: "Forgequeue", title: "Forgequeue", category: "In progress" },
 ];

@@ -103,7 +103,7 @@ test("atlas traces truthful theme mappings and adapts to its container", async (
   await expect(connectors).toHaveAttribute("aria-hidden", "true");
 
   for (const [theme, paths] of [
-    ["Reliability", ["claimguard", "cloudcrew", "ecommerce-qa"]],
+    ["Reliability", ["claimguard", "forgequeue", "ecommerce-qa"]],
     ["AI & interaction", ["clearstep", "claimguard", "mindplay"]],
     ["Security", ["cipherrelay"]],
   ] as const) {

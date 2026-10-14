@@ -29,7 +29,7 @@ test("curated flagships, previews, CV chooser, and clipboard feedback", async ({
     .getByRole("button", { name: "Cloud & DevOps", exact: true })
     .click();
   await expect(
-    cards.first().getByRole("heading", { name: "CloudCrew" }),
+    cards.first().getByRole("heading", { name: "ForgeQueue" }),
   ).toBeVisible();
   await page
     .getByRole("button", { name: "SQA & Testing", exact: true })

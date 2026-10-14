@@ -3,7 +3,7 @@
 Live: https://usman-tariq-portfolio.vercel.app  
 Repository: https://github.com/usman78654/Usman-Tariq-portfolio
 
-A Next.js / TypeScript portfolio for recruiters and curious visitors. Includes curated role-aware showcases, nine README-grounded case studies, inspectable architecture, three engineering experiments, three build notes, and three original CV downloads.
+A Next.js / TypeScript portfolio for recruiters and curious visitors. Includes curated role-aware showcases, ten README-grounded case studies, inspectable architecture, three engineering experiments, three build notes, and three original CV downloads. ForgeQueue's review and evidence boundaries are documented in [forgequeue-review.md](forgequeue-review.md).
 
 ## Run locally
 

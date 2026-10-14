@@ -212,7 +212,10 @@ export default async function ProjectPage({
         </div>
         <p className="source-note">
           Capabilities and result snapshots follow the project's current README,
-          reviewed {p.slug === "mindplay" ? "October 11" : "October 10"}, 2026.{" "}
+          reviewed{" "}
+          {p.reviewed ??
+            `${p.slug === "mindplay" ? "October 11" : "October 10"}, 2026`}
+          .{" "}
           <a href={`${repoUrl(p)}#readme`} target="_blank" rel="noreferrer">
             Read the source <ArrowUpRight size={14} />
           </a>
